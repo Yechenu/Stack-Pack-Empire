@@ -1,12 +1,17 @@
 package com.model;
 
-public class users {
-    int employeeID;
-    String email, username, password;
+public class Users {
+	
+/*Initialize variables (table column names)*/
+	
+    String employeeID;
+    String email, username, password;   
 
-
-    public users(){};
-    public users(int employeeID, String email,
+/*Add the Big 3: Class Constructor, Getters and Setters
+  Select the "Source" tab and Generate constructors, getters & setters) */  
+   
+    public Users(){};
+    public Users(String employeeID, String email,
                  String username, String password){
         this.employeeID = employeeID;
         this.email = email;
@@ -14,11 +19,11 @@ public class users {
         this.password= password;
     }
 
-    public int getEmployeeID() {
+    public String getEmployeeID() {
         return employeeID;
     }
 
-    public void setEmployeeID(int employeeID) {
+    public void setEmployeeID(String employeeID) {
         this.employeeID = employeeID;
     }
 
