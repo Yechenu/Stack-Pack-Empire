@@ -1,3 +1,5 @@
+package com.model;
+
 public class users {
     int employeeID;
     String email, username, password;
