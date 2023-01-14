@@ -1,7 +1,7 @@
 package com.dao;
 
 //import model and conn
-import com.model.Users;
+import com.model.User;
 
 import com.conn.DBconnect;
 
@@ -17,11 +17,11 @@ import javax.servlet.http.HttpServlet;
 
 
 
-public class UsersDAO extends HttpServlet {
+public class UserDAO extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	//REGISTER: write method that returns a string. This method will pass the Users object)
-	public String  Register(Users model)
+	public String  Register(User model)
 			throws ClassNotFoundException, FileNotFoundException{
 		int rowCount = 0;
 		
@@ -46,7 +46,7 @@ public class UsersDAO extends HttpServlet {
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		if (rowCount != 0) {
@@ -57,7 +57,7 @@ public class UsersDAO extends HttpServlet {
 		}
 	}
 	//LOGIN: return booelan to validate login info 
-	public boolean Login(Users model) throws FileNotFoundException, ClassNotFoundException {
+	public boolean Login(User model) throws FileNotFoundException, ClassNotFoundException {
 		
 		
 		boolean result = false;

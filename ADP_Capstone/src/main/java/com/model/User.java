@@ -1,6 +1,6 @@
 package com.model;
 
-public class Users {
+public class User {
 	
 /*Initialize variables (table column names)*/
 	
@@ -10,8 +10,8 @@ public class Users {
 /*Add the Big 3: Class Constructor, Getters and Setters
   Select the "Source" tab and Generate constructors, getters & setters) */  
    
-    public Users(){};
-    public Users(String employeeID, String email,
+    public User(){};
+    public User(String employeeID, String email,
                  String username, String password){
         this.employeeID = employeeID;
         this.email = email;

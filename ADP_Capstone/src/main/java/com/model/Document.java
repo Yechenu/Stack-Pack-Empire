@@ -1,11 +1,14 @@
 package com.model;
 
+import java.io.InputStream;
+
 public class Document {
 
-    String listType,documentType,issuingAuthority, expirationDate, documentPdf;
+    private String listType,documentType,issuingAuthority, expirationDate;
+    private InputStream documentPdf;
 
     public Document(String listType, String documentType, String issuingAuthority,
-                    String expirationDate, String documentPdf) {
+                    String expirationDate, InputStream documentPdf) {
         this.listType = listType;
         this.documentType = documentType;
         this.issuingAuthority= issuingAuthority;
@@ -45,11 +48,11 @@ public class Document {
         this.expirationDate = expirationDate;
     }
 
-    public String getDocumentPdf() {
+    public InputStream getDocumentPdf() {
         return documentPdf;
     }
 
-    public void setDocumentPdf(String documentPdf) {
+    public void setDocumentPdf(InputStream documentPdf) {
         this.documentPdf = documentPdf;
     }
 }
