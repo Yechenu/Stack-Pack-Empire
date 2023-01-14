@@ -134,3 +134,5 @@
 2023-01-13 22:24:13,638 [Worker-105: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
 2023-01-13 22:24:13,657 [Worker-105: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
 2023-01-13 22:24:13,664 [Worker-105: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-13 22:30:13,685 [Worker-110: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-13 22:30:13,712 [Worker-110: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
