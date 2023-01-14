@@ -110,3 +110,27 @@
 2023-01-13 18:53:34,156 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
 2023-01-13 18:53:34,163 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
 2023-01-13 18:53:34,167 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-13 19:01:30,487 [Worker-86: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-13 19:01:30,500 [Worker-86: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-13 19:01:30,505 [Worker-86: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-13 19:01:31,526 [Worker-85: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-13 19:01:31,534 [Worker-85: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-13 19:01:31,537 [Worker-85: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-13 19:27:00,818 [Worker-90: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-13 19:27:00,916 [Worker-90: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-13 19:27:00,928 [Worker-90: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-13 20:56:37,093 [Worker-96: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-13 20:56:37,241 [Worker-96: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-13 20:56:37,250 [Worker-96: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-13 22:19:12,925 [Worker-100: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-13 22:19:12,971 [Worker-100: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-13 22:19:12,981 [Worker-100: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-13 22:19:43,921 [Worker-102: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-13 22:19:44,021 [Worker-102: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-13 22:19:44,029 [Worker-102: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-13 22:19:46,172 [Worker-93: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-13 22:19:46,192 [Worker-93: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-13 22:19:46,200 [Worker-93: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-13 22:24:13,638 [Worker-105: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-13 22:24:13,657 [Worker-105: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-13 22:24:13,664 [Worker-105: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
