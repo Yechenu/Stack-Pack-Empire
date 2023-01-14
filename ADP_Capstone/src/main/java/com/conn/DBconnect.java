@@ -15,6 +15,7 @@ public class DBconnect {
 		try {
 			Class.forName(loadDriver);
 			con = DriverManager.getConnection(dbURL, dbUSERNAME, dbPASSWORD);
+			
 		} catch (ClassNotFoundException e) {
 			
 			e.printStackTrace();
@@ -22,6 +23,10 @@ public class DBconnect {
 			// 
 			e.printStackTrace();
 		}
+		if(con==null) {
+			System.out.println("**WHOOPS, JDBC CONNECTION IS NOT ESTABLISHED**");
+		}else
+			System.out.println("**CONGRATULATIONS, JDBC CONNECTION IS ESTABLISHED**");
 		return con;
 	}
 }

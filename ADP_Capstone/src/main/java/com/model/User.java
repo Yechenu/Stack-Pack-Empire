@@ -4,14 +4,14 @@ public class User {
 	
 /*Initialize variables (table column names)*/
 	
-    String employeeID;
+    int employeeID;
     String email, username, password;   
 
 /*Add the Big 3: Class Constructor, Getters and Setters
   Select the "Source" tab and Generate constructors, getters & setters) */  
    
     public User(){};
-    public User(String employeeID, String email,
+    public User(int employeeID, String email,
                  String username, String password){
         this.employeeID = employeeID;
         this.email = email;
@@ -19,11 +19,11 @@ public class User {
         this.password= password;
     }
 
-    public String getEmployeeID() {
+    public int getEmployeeID() {
         return employeeID;
     }
 
-    public void setEmployeeID(String employeeID) {
+    public void setEmployeeID(int employeeID) {
         this.employeeID = employeeID;
     }
 
