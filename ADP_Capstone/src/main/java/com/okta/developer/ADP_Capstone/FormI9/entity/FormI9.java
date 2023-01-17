@@ -1,4 +1,4 @@
-package com.model;
+package com.okta.developer.ADP_Capstone.FormI9.entity;
 
 public class FormI9 {
     int employeeID, formID, zipCode;

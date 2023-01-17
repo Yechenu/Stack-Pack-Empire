@@ -1,4 +1,4 @@
-package com.model;
+package com.okta.developer.ADP_Capstone.Blacklist.entity;
 
 public class Blacklist {
 

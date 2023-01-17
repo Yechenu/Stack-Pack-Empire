@@ -1,4 +1,4 @@
-package com.model;
+package com.okta.developer.ADP_Capstone.User.entity;
 
 public class User {
 	

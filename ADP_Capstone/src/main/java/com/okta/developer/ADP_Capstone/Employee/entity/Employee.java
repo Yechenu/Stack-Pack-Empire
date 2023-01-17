@@ -1,4 +1,4 @@
-package com.model;
+package com.okta.developer.ADP_Capstone.Employee.entity;
 
 public class Employee  {
 
