@@ -1,4 +1,5 @@
-package com.okta.developer.ADP_Capstone.User.entity;
+package src.main.java.com.okta.developer.ADP_Capstone.User.entity;
+
 
 public class User {
 	
