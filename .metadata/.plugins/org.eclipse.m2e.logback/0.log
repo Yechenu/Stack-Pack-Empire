@@ -576,3 +576,52 @@ Caused by: java.io.FileNotFoundException: C:\Users\DiamondBrown\OneDrive - Xpanx
 2023-01-17 11:58:46,486 [Worker-5662: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
 2023-01-17 11:58:46,493 [Worker-5662: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
 2023-01-17 11:58:46,500 [Worker-5662: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-17 13:43:57,110 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-01-17 13:44:03,201 [Worker-0: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact mysql:mysql-connector-java:jar:8.0.31 has been relocated to com.mysql:mysql-connector-j:jar:8.0.31: MySQL Connector/J artifacts moved to reverse-DNS compliant Maven 2+ coordinates.
+2023-01-17 13:44:06,133 [Worker-0: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.okta.developer:ADP_Capstone:0.0.1-SNAPSHOT @ C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\pom.xml.
+2023-01-17 13:44:06,913 [Worker-0: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact mysql:mysql-connector-java:jar:8.0.31 has been relocated to com.mysql:mysql-connector-j:jar:8.0.31: MySQL Connector/J artifacts moved to reverse-DNS compliant Maven 2+ coordinates.
+2023-01-17 13:44:07,305 [Worker-0: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact mysql:mysql-connector-java:jar:8.0.31 has been relocated to com.mysql:mysql-connector-j:jar:8.0.31: MySQL Connector/J artifacts moved to reverse-DNS compliant Maven 2+ coordinates.
+2023-01-17 13:44:09,729 [Worker-0: Building] ERROR o.e.m.c.i.p.WorkspaceStateWriter - Error writing workspace state file
+org.eclipse.core.internal.resources.ResourceException: Could not write metadata for 'C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\.metadata\.plugins\org.eclipse.core.resources\.projects\ADP_Capstone\.indexes\properties.index'.
+	at org.eclipse.core.internal.localstore.Bucket.save(Bucket.java:426)
+	at org.eclipse.core.internal.properties.PropertyBucket.save(PropertyBucket.java:301)
+	at org.eclipse.core.internal.properties.PropertyManager2.setProperty(PropertyManager2.java:183)
+	at org.eclipse.core.internal.resources.Resource.setPersistentProperty(Resource.java:1697)
+	at org.eclipse.m2e.core.internal.project.WorkspaceStateWriter.getAndPersistArtifactExtension(WorkspaceStateWriter.java:133)
+	at org.eclipse.m2e.core.internal.project.WorkspaceStateWriter.mavenProjectChanged(WorkspaceStateWriter.java:95)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.notifyProjectChangeListeners(ProjectRegistryManager.java:832)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.applyMutableProjectRegistry(ProjectRegistryManager.java:985)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:315)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:149)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:87)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:364)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:274)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:213)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:86)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:196)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1024)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:254)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:400)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:403)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:514)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:462)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:544)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:161)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:255)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.FileNotFoundException: C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\.metadata\.plugins\org.eclipse.core.resources\.projects\ADP_Capstone\.indexes\properties.index (The tag present in the reparse point buffer is invalid)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:293)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:184)
+	at org.eclipse.core.internal.localstore.Bucket.save(Bucket.java:414)
+	... 28 common frames omitted
+2023-01-17 13:44:11,017 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-17 13:44:11,072 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-17 13:44:11,087 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-17 13:44:13,710 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-17 13:44:13,720 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-17 13:44:13,729 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
