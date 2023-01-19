@@ -17,7 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "role")
+@Table(name="role")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "created_at", "updated_at" }, allowGetters = true)
 public class Role {

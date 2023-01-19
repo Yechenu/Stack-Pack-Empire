@@ -15,7 +15,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.util.Date;
 
 /*
- * Location.java
+ * Employee.java
  * This file contains the employee entity for ADP employees
  * @Aladi
  */

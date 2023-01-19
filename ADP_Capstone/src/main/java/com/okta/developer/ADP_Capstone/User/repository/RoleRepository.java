@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 /*
  *RoleRepository.java
  * This repository "talks" with the database for the role entity
+ * - Retrieves the Role Entity by its roleName.
  *
  * @Diamond Brown
  */

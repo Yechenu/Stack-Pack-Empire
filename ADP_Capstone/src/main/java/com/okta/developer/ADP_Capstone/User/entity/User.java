@@ -3,7 +3,6 @@ package com.okta.developer.ADP_Capstone.User.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.okta.developer.ADP_Capstone.Employee.entity.Employee;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +10,6 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Date;
 
@@ -64,32 +62,6 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updated_at;
-
-
-    @Transient //not included database
-    @Size(min=5, max=15, message="{register.password.size}")
-    private String plainPassword; //unencrytped
-
-    @OneToOne(orphanRemoval = true)
-    @JoinTable(name = "user_employee",
-            joinColumns = @JoinColumn(name = "user_userid"),
-            inverseJoinColumns = @JoinColumn(name = "employee_employeeid"))
-    private Employee employee;
-
-
-    @Transient
-    public void setPlainPassword(String plainPassword) {
-        //System.out.println("PASSWORD BEFORE " + plainPassword);
-        this.password = new BCryptPasswordEncoder().encode(plainPassword);
-        //System.out.println("HERE IS PASSWORD" + this.password + "PASSWORD LENGTH = " + (this.password).length());
-        this.plainPassword = plainPassword;
-
-
-    }
-    @Transient
-    public String getConfirmPassword(){;
-        return this.password;
-    }
 
 /*Add the Big 3: Class Constructor, Getters and Setters
   Select the "Source" tab and Generate constructors, getters & setters) */

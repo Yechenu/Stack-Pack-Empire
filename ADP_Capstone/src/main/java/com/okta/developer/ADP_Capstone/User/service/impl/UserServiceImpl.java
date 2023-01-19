@@ -1,5 +1,7 @@
 package com.okta.developer.ADP_Capstone.User.service.impl;
 
+import com.okta.developer.ADP_Capstone.Employee.entity.Employee;
+import com.okta.developer.ADP_Capstone.Employee.repository.EmployeeRepository;
 import com.okta.developer.ADP_Capstone.User.dto.UserDTO;
 import com.okta.developer.ADP_Capstone.User.entity.User;
 import com.okta.developer.ADP_Capstone.User.repository.RoleRepository;
@@ -18,17 +20,22 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final EmployeeRepository employeeRepository;
 
     public UserServiceImpl(UserRepository userRepository,
                            RoleRepository roleRepository,
-                           PasswordEncoder passwordEncoder) {
+                           PasswordEncoder passwordEncoder,
+                           EmployeeRepository employeeRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.employeeRepository = employeeRepository;
     }
+
 
     @Override
     public void registerUser(UserDTO userDto) {
+
         User user = new User();
         user.setEmployeeID(userDto.getEmployeeID());
         user.setRoleID(userDto.getRoleID());
@@ -47,11 +54,15 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    //returns User by found by email --> will be used to compare user email with existing employee
     @Override
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
+    //returns Employee by found by email --> will be used to compare user email with existing employee
+    @Override
+    public Employee findByEmail(String email) {return employeeRepository.findByEmail(email);}
     @Override
     public List<UserDTO> findAllUsers() {
         List<User> users = userRepository.findAll();
@@ -59,6 +70,8 @@ public class UserServiceImpl implements UserService {
                 .map((user) -> mapToUserDto(user))
                 .collect(Collectors.toList());
     }
+
+
 
     private UserDTO mapToUserDto(User user) {
         UserDTO userDto = new UserDTO();

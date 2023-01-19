@@ -1,5 +1,6 @@
 package com.okta.developer.ADP_Capstone.User.controller;
 
+import com.okta.developer.ADP_Capstone.Employee.entity.Employee;
 import com.okta.developer.ADP_Capstone.User.dto.UserDTO;
 import com.okta.developer.ADP_Capstone.User.entity.User;
 import com.okta.developer.ADP_Capstone.User.service.UserService;
@@ -45,10 +46,16 @@ public class AuthController {
                                BindingResult result,
                                Model model){
         User existingUser = userService.findUserByEmail(userDto.getEmail());
-
+        Employee existingEmployee= userService.findByEmail((userDto.getEmail()));
+//if euser, .getEmail , is not NULL nor an NOT an empty field...
         if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
             result.rejectValue("email", null,
                     "There is already an account activated with the same email");
+        } else {
+            assert existingUser != null;
+            if (!existingUser.equals(existingEmployee)) {
+                result.rejectValue("email", "This email is not an active ADP email address");
+            }
         }
 
         if(result.hasErrors()){
