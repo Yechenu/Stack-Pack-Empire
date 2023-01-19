@@ -11,7 +11,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
-import java.util.List;
 
 @Getter
 @Setter
@@ -24,15 +23,16 @@ import java.util.List;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Role_ID", nullable = false)
-    private Long roleid;
+    @Column(name = "roleID", nullable = false)
+    private Long roleID;
 
-    @Column(name= "Role", nullable = false, unique = true) //unique key: Search for a role by role name
+    @Column(name= "role",length=60, nullable = false, unique = true) //unique key: Search for a role by role name
     private String role;
 
     //many-to-many relationship. /roles will display users
-    @ManyToMany(mappedBy="roles")
-    private List<User> users;
+    @OneToOne(mappedBy= "roleID", cascade = CascadeType.ALL)
+    // indicates that the pk of the Role entity is used as the fk for the associated Role entity.
+    private User userID;
 
 
     //Security parameter. Every table should have a creat/modified at column
@@ -41,6 +41,7 @@ public class Role {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updated_at;
+
 
 
 }

@@ -1,90 +1,75 @@
 package com.okta.developer.ADP_Capstone.Employee.entity;
 
-public class Employee  {
 
-    String role;
-    String lName;
-    String fName;
-    String email;
-    int phone;
-    String address;
-    int zipCode;
-    String country;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.okta.developer.ADP_Capstone.User.entity.User;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-    public Employee(String role, String lName, String fName,
-                    String email, int phone, String address,
-                    int zipCode, String country) {
-        this.role = role;
-        this.lName = lName;
-        this.fName = fName;
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
-        this.zipCode = zipCode;
-        this.country = country;
-    }
+import java.util.Date;
 
-    public String getRole() {
-        return role;
-    }
+/*
+ * Location.java
+ * This file contains the employee entity for ADP employees
+ * @Aladi
+ */
 
-    public void setRole(String role) {
-        this.role = role;
-    }
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "employee")
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(value = { "created_at", "updated_at" }, allowGetters = true)
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Auto increments primary key
+    @Column(name="employeeID", nullable=false) // employeeid not null
+    private Long employeeID;
 
-    public String getlName() {
-        return lName;
-    }
 
-    public void setlName(String lName) {
-        this.lName = lName;
-    }
 
-    public String getfName() {
-        return fName;
-    }
+    @ManyToOne (cascade = CascadeType.ALL) //One to one relationship btw employee and location
+    @JoinColumn(name = "locationID",nullable=false)// Foreign key location table
+    private Location locationID; // instantiate location entity(object)
 
-    public void setfName(String fName) {
-        this.fName = fName;
-    }
+    @Column(name = "role")
+    private String role;
 
-    public String getEmail() {
-        return email;
-    }
+    @Column(name = "lName", length=60)
+    private String lastName;
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    @Column(name = "fName", length=60)
+    private String firstName;
 
-    public int getPhone() {
-        return phone;
-    }
+    @Column(name = "Email", length=60)
+    private String email;
 
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
+    @Column(name = "Phone", length=20)
+    private int phone;
 
-    public String getAddress() {
-        return address;
-    }
+    @Column(name = "Address", length=60)
+    private String address;
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    @Column(name = "zipCode", length=60)
+    private int ZipCode;
 
-    public int getZipCode() {
-        return zipCode;
-    }
+    @Column(name = "Country", length=60)
+    private String country;  @Column(nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    private Date created_at;  @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
+    private Date updated_at;
 
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
+    @OneToOne(mappedBy = "employee")
+    private User user;
 }
