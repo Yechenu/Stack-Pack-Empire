@@ -33,7 +33,7 @@ import java.util.Date;
 	  private Long employeeID;  
 		
 		@OneToOne(cascade = CascadeType.ALL) //One to one relationship btw employee and location
-		@JoinColumn(name = "locationID", referencedColumnName = "locationID")// Foreign key location table
+		 @JoinColumn(name = "locationID" ,nullable=false)// Foreign key location table. not null
 	    private Location locationID; // instantiate location entity(object)
 		
 	 @Column(name = "role")
