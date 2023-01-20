@@ -1,4 +1,4 @@
-package com.okta.developer.ADP_Capstone.User.entity;
+package com.okta.developer.ADP_Capstone.AppUser.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.okta.developer.ADP_Capstone.Employee.entity.Employee;
@@ -12,6 +12,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
+import java.util.Set;
 
 /*User.java
 * This entity file contains the database blueprint of the user table
@@ -28,32 +29,35 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "app_user")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "created_at", "updated_at" }, allowGetters = true)
-public class User {
+public class AppUser {
 
     /*Initialize variables (table column names)*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userID", nullable = false)
-    private Long  userID;
+    private Long userId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    /*@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "roleID", referencedColumnName = "roleID")
-    //@JoinColumn(name = "roleID", referencedColumnName = "roleID")
-    //inverseJoinColumns = {@JoinColumn(name = "Role_ID", referencedColumnName = "Role_ID")})
-    private Role roleID;  //Do the same for other foreign key
+    private Role roleID;
+*/
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "userID", referencedColumnName = "userID"),
+            inverseJoinColumns = @JoinColumn(name = "roleID", referencedColumnName = "roleID"))
+    private Set<Role> role;
 
-   //
-   @OneToOne(cascade = CascadeType.ALL)
-   @JoinColumn(name = "employeeID", referencedColumnName = "employeeID")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "employeeID", referencedColumnName = "employeeID")
     private Employee employeeID; //change to private Employee employeeID once that entity is made
 
-    @Column(name = "email",length=60, unique = true, nullable = false)
+    @Column(name = "email", length = 60, unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password", length=60, nullable = false)
+    @Column(name = "password", length = 60, nullable = false)
     private String password;
 
     @CreatedDate
@@ -63,6 +67,5 @@ public class User {
     @LastModifiedDate
     private Date updated_at;
 
-/*Add the Big 3: Class Constructor, Getters and Setters
-  Select the "Source" tab and Generate constructors, getters & setters) */
+
 }

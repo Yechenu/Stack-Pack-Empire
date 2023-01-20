@@ -2,7 +2,7 @@ package com.okta.developer.ADP_Capstone.FormI9.dto;
 
 
 import com.okta.developer.ADP_Capstone.Employee.entity.Employee;
-import com.okta.developer.ADP_Capstone.User.entity.Role;
+import com.okta.developer.ADP_Capstone.AppUser.entity.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;

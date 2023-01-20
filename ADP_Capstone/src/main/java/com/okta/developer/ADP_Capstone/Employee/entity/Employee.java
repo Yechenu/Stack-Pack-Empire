@@ -2,7 +2,6 @@ package com.okta.developer.ADP_Capstone.Employee.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.okta.developer.ADP_Capstone.User.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +11,9 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /*
  * Employee.java
@@ -34,13 +35,11 @@ public class Employee {
     @Column(name="employeeID", nullable=false) // employeeid not null
     private Long employeeID;
 
-
-
-    @ManyToOne (cascade = CascadeType.ALL) //One to one relationship btw employee and location
+    @ManyToOne (cascade = CascadeType.ALL) //One-to-one relationship btw employee and location
     @JoinColumn(name = "locationID",nullable=false)// Foreign key location table
     private Location locationID; // instantiate location entity(object)
 
-    @Column(name = "role")
+    @Column(name = "role", length=60)
     private String role;
 
     @Column(name = "lName", length=60)
@@ -49,17 +48,17 @@ public class Employee {
     @Column(name = "fName", length=60)
     private String firstName;
 
-    @Column(name = "Email", length=60)
+    @Column(name = "Email", length=60, unique = true)
     private String email;
 
-    @Column(name = "Phone", length=20)
-    private int phone;
+    @Column(name = "Phone", length=15)
+    private String phone;
 
     @Column(name = "Address", length=60)
     private String address;
 
     @Column(name = "zipCode", length=60)
-    private int ZipCode;
+    private String ZipCode;
 
     @Column(name = "Country", length=60)
     private String country;  @Column(nullable = false, updatable = false)
@@ -70,6 +69,7 @@ public class Employee {
     @LastModifiedDate
     private Date updated_at;
 
-    @OneToOne(mappedBy = "employee")
-    private User user;
+
+    @Transient
+    private List<Employee> employeeList = new ArrayList<>();
 }

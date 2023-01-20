@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 /*
  *EmployeeRepository.java
- * This repository "talks" with the database for the role entity
+ * This repository "talks" with the database for the Employee entity
  * - Retrieves the Employee Entity by its email.
  *
  * @Diamond Brown
@@ -14,6 +14,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-    //Query for employee by email. Returns Employee obj
-     Employee findByEmail(String email);
+
+    //Query for employee by email. Returns boolean
+    Boolean existsByEmail(String email); //Checks if there are any records in db by email
+
+    //**DEMO ONLY**
+    //Boolean existsBy(); Checks if there are any records in the employee db
 }

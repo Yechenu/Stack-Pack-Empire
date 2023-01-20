@@ -1,8 +1,10 @@
-package com.okta.developer.ADP_Capstone.User.repository;
+package com.okta.developer.ADP_Capstone.AppUser.repository;
 
-import com.okta.developer.ADP_Capstone.User.entity.Role;
+import com.okta.developer.ADP_Capstone.AppUser.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 /*
  *RoleRepository.java
@@ -15,5 +17,5 @@ import org.springframework.stereotype.Repository;
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
     //this repository finds role name by unique identifier "roleName"
-    Role findByRole(String roleName);
+    Optional<Role> findByRole(String roleName);
 }

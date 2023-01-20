@@ -1,4 +1,4 @@
-package com.okta.developer.ADP_Capstone.User.entity;
+package com.okta.developer.ADP_Capstone.AppUser.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -28,11 +28,6 @@ public class Role {
 
     @Column(name= "role",length=60, nullable = false, unique = true) //unique key: Search for a role by role name
     private String role;
-
-    //many-to-many relationship. /roles will display users
-    @OneToOne(mappedBy= "roleID", cascade = CascadeType.ALL)
-    // indicates that the pk of the Role entity is used as the fk for the associated Role entity.
-    private User userID;
 
 
     //Security parameter. Every table should have a creat/modified at column
