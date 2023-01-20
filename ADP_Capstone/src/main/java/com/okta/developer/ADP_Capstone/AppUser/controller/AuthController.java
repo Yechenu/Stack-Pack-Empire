@@ -3,11 +3,13 @@ package com.okta.developer.ADP_Capstone.AppUser.controller;
 import com.okta.developer.ADP_Capstone.AppUser.dto.LoginData;
 import com.okta.developer.ADP_Capstone.AppUser.dto.RegisterData;
 import com.okta.developer.ADP_Capstone.AppUser.entity.AppUser;
+import com.okta.developer.ADP_Capstone.AppUser.entity.ERole;
 import com.okta.developer.ADP_Capstone.AppUser.entity.Role;
 import com.okta.developer.ADP_Capstone.AppUser.repository.AppUserRepository;
 import com.okta.developer.ADP_Capstone.AppUser.repository.RoleRepository;
 import com.okta.developer.ADP_Capstone.AppUser.service.UserService;
 import com.okta.developer.ADP_Capstone.Employee.repository.EmployeeRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +22,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 
-
+@CrossOrigin("*")
 @RestController
-@RequestMapping("/Capstone/api/auth")
+@RequestMapping("/capstone/api/auth")
 public class AuthController {
 
     @Autowired
@@ -47,35 +49,41 @@ public class AuthController {
     }
 
     // handler method that handles the Login/Sign in REST API:
+    //  - check existing username/email
+    //  - create new User (with ROLE_USER if not specifying role)
+    //  - save User to database using UserRepository
     @PostMapping("/login")
     public ResponseEntity<String> authenticateUser(@RequestBody LoginData loginData){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                loginData.getEmail(), loginData.getPassword()));
+                loginData.getUsername(), loginData.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return new ResponseEntity<>("User signed-in successfully!.", HttpStatus.OK);
     }
     // handler method that handles the Register/SignUp REST API:
+
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody RegisterData registerData){
+    public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterData registerData){
 
         // add check for employee email exists in a DB. if it DOES NOT...
-        if(!employeeRepo.existsByEmail(registerData.getEmail())){
-            return new ResponseEntity<>("Invalid Employee Email!", HttpStatus.BAD_REQUEST);
+        if(appUserRepo.existsByUsername(registerData.getUsername())){
+            return new ResponseEntity<>("Error: Username is already taken!", HttpStatus.BAD_REQUEST);
         }
 
         // add check for username email exists in DB
         if(appUserRepo.existsByEmail(registerData.getEmail())){
-            return new ResponseEntity<>("Email is already taken!", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Error: Email is already taken!", HttpStatus.BAD_REQUEST);
         }
         //getEmployeeID, getRole, getEmail, getPassword from the appUser
-        // and set in the email field in the db
+        // and set in the appUser fields in the db
         AppUser newUser = new AppUser();
-        newUser.setEmployeeID(registerData.getEmployeeID());
+        newUser.setFname(registerData.getFname());
+        newUser.setLname(registerData.getLname());
         newUser.setEmail(registerData.getEmail());
         newUser.setPassword(passwordEncoder.encode(registerData.getPassword()));
-            Role roles = roleRepo.findByRole("ROLE_ADMIN").get();
-        newUser.setRole(Collections.singleton(roles));
+         String strRoles = registerData.getRole();
+        Role userRole = roleRepo.findByRole(ERole.valueOf("ROLE_" + strRoles));
+        newUser.setRole(Collections.singleton(userRole));
 
         //Save user entity into DB via userRepository "save()" method
         appUserRepo.save(newUser);

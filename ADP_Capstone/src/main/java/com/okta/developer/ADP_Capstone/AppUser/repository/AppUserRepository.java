@@ -17,11 +17,12 @@ import java.util.Optional;
 public interface AppUserRepository extends JpaRepository<AppUser, Long> {
 //A repository that finds the users (logins) by email
 
-    Optional<AppUser> findByEmail(String email);
+    Optional<AppUser> findByUsername(String username);
     Optional<AppUser> findByPassword(String password);
     // AppUser findByEmail(String email);
 
     //Returns boolean
+    Boolean existsByUsername(String username);
     Boolean existsByEmail(String email);
 
     Boolean existsByPassword(String password);

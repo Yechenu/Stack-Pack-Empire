@@ -7,7 +7,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -19,7 +18,7 @@ import java.util.stream.Collectors;
 * @Diamond Brown
 * */
 
-@Service
+//@Service
 public class CustomUserDetailsService implements UserDetailsService {
     public CustomUserDetailsService() {
 
@@ -36,19 +35,19 @@ public class CustomUserDetailsService implements UserDetailsService {
     //this method is implemented from the UserDetailsService interface layer
     //Looks up UserDetails for a given username
     @Override
-    public UserDetails loadUserByUsername(String employeeEmail) throws UsernameNotFoundException {
-        AppUser user = appUserRepo.findByEmail(employeeEmail)
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        AppUser user = appUserRepo.findByUsername(username)
         .orElseThrow(() ->
-                        new UsernameNotFoundException("User not found with email: " + employeeEmail));
+                        new UsernameNotFoundException("User not found with email: " + username));
         //returns User Details by identifying the employee's email
         //return appUserRepo.findByEmail(employeeEmail);
 
         Set<GrantedAuthority> authorities = user
-                .getRole()
+                .getRoles()
                 .stream()
-                .map((role) -> new SimpleGrantedAuthority(role.getRole())).collect(Collectors.toSet());
+                .map(roles -> new SimpleGrantedAuthority(roles.getRole().name())).collect(Collectors.toSet());
 
-        return new org.springframework.security.core.userdetails.User(user.getEmail(),
+        return new org.springframework.security.core.userdetails.User(user.getUsername(),
                 user.getPassword(),
                 authorities);
     }

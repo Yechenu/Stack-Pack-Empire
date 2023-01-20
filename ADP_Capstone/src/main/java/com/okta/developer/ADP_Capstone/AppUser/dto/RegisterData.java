@@ -1,7 +1,5 @@
 package com.okta.developer.ADP_Capstone.AppUser.dto;
 
-import com.okta.developer.ADP_Capstone.AppUser.entity.Role;
-import com.okta.developer.ADP_Capstone.Employee.entity.Employee;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -21,17 +19,22 @@ import lombok.*;
 @Data
 public class RegisterData {
 
+    @NotEmpty
+    private String role;
 
+    @NotEmpty(message = "First name should not be empty")
+    private String fname;
 
-    @NotEmpty(message = "Employee ID should not be empty")
-    private Employee employeeID;
+    @NotEmpty(message = "Last name should not be empty")
+    private String lname;
 
-    @NotEmpty(message = "Role should not be empty")
-    private Role roleID;
-
-    @NotEmpty(message = "Employee Email is required")
+    @NotEmpty(message = "Valid Email is required")
     @Email
     private String email;
+
+    @NotEmpty(message = "Username is required")
+    @Email
+    private String username;
 
     @Size(min = 6, message = "At least 6 characters")
     @NotEmpty(message = "Password should not be empty")

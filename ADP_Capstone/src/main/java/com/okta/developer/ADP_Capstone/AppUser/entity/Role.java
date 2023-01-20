@@ -23,12 +23,12 @@ import java.util.Date;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "roleID", nullable = false)
+    @Column(name = "roleID", nullable = false, length= 11)
     private Long roleID;
 
-    @Column(name= "role",length=60, nullable = false, unique = true) //unique key: Search for a role by role name
-    private String role;
-
+    @Enumerated(EnumType.STRING)
+    @Column(name = "eRole")
+    private ERole role;
 
     //Security parameter. Every table should have a creat/modified at column
     @CreatedDate

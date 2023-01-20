@@ -6,10 +6,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+
 
 /*
 * SpringSecurtiy.java
@@ -19,10 +22,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 * to hash the passwords.*/
 @Configuration
 @EnableWebSecurity
-public class SpringSecurity {
+public class SpringSecurity   {
 
     @Autowired
     private UserDetailsService jwtUserDetailsService;
+
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -31,26 +35,24 @@ public class SpringSecurity {
         // Use BCryptPasswordEncoder
         auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
     }
-
+    @Bean
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
+    }
     @Bean
     public static PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration configuration) throws Exception {
-        return configuration.getAuthenticationManager();
-    }
-
-    /*@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // We don't need CSRF
-        http.csrf().disable()
-                .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/api/**").permitAll()
-                                .requestMatchers("/api/auth").permitAll()
-                )/*.formLogin(
+        http.csrf().disable();
+                /*.authorizeHttpRequests((authorize) ->
+                        authorize.requestMatchers("/hello").permitAll()
+                                .requestMatchers("/Capstone/api/auth/**").permitAll()
+                );.formLogin(
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
@@ -62,10 +64,8 @@ public class SpringSecurity {
                                 .permitAll()
 
                 ;
-
+*/
         return http.build();
     }
-
-     */
 }
 
