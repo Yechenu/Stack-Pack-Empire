@@ -1,8 +1,8 @@
 package com.okta.developer.ADP_Capstone.FormI9.entity;
+
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -11,19 +11,19 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "Documents")
+@Entity(name = "Document")
 @Table(name = "i9_documents")
-public class Documents {
+public class Document {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="DocumentID", nullable=false)
+    @Column(name="documentID", nullable=false)
     private Integer documentID;
 
-    @Column(name = "DocumentType", length=60)
-    private String documentType;
+    @Column(name = "documentName", length=60)
+    private String documentName;
 
-    @Column(name = "FormID", length=60)
+    @Column(name = "formID", length=60)
     private Integer formID;
 
     @Column(name = "EmployeeID", length=60)
@@ -44,8 +44,15 @@ public class Documents {
     @Column(name = "AdditionalInfo", length=60)
     private String additionalInfo;
 
-    @Column(name = "DocumentPDF", length=60)
-    private Blob documentPDF;
+    @Column(name= "fileName")
+    private String fileName;
+
+    @Column (name= "fileType")
+    private String fileType;
+
+    @Lob
+    @Column(name = "filePDF", length=60)
+    private byte[] filePDF;
 
     @Column(name = "created_At", length=60)
     private Timestamp created_At;
