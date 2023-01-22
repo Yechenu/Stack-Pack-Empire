@@ -33,14 +33,14 @@ public class FileUploadController {
     public ResponseFile uploadFile(@RequestParam(value = "file", required = true) MultipartFile file) {
     	Document fileName = null;
     	//Stored uploaded file original name into a Document object(fileName, file.getContentType(), file.getBytes());
-         fileName = fileStorageService.store(file);
+         fileName = fileStorageService.saveFile(file);
          
 
          String fileDownloadUri = "";
         //Store download URI from the following info
          fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-            .path("/downloadFile/")
-            .path(fileName.getFileName())
+            .path("/capstoneApi/document/downloadFile/")
+            .path(fileName.getDocumentID())
             .toUriString();
         
         //ResponseFile(String newFileName, String downloadURI, MultipartFile contentType, MultipartFile fileSize)
@@ -48,7 +48,7 @@ public class FileUploadController {
             file.getContentType(), file.getSize());
     }
 
-    //pass uploaded files through 'uploadMultipleFiles' @RequestParam & store in a list
+    //pass uploaded files through 'uploadMultipleFiles' @RequestParam & saveFile in a list
     @PostMapping("/uploadMultipleFiles")
     public List < ResponseFile > uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
         

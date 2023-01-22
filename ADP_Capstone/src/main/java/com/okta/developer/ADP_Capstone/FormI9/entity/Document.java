@@ -3,9 +3,9 @@ package com.okta.developer.ADP_Capstone.FormI9.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -35,7 +35,6 @@ import java.sql.Timestamp;
 
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -44,9 +43,10 @@ import java.sql.Timestamp;
 public class Document {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name="documentID", nullable=false)
-    private Long documentID;
+    private String documentID;
 
     @Column(name= "documentTitle", length = 60)
     private String  documentTitle;
@@ -85,12 +85,15 @@ public class Document {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified_At", length=60, nullable = false)
     private Timestamp modified_At;
+    public Document() {
 
+    }
     public Document(String fileName, String fileType, byte[] fileAttachment) {
         this.fileName= fileName;
         this.fileType= fileType;
         this.fileAttachment= fileAttachment;
     }
+
 
     public String getFileName() {
 
@@ -102,11 +105,11 @@ public class Document {
 
     public String getDocumentID() {
 
-        return String.valueOf(this.documentID);
+        return this.documentID;
     }
 
     public String getFileType() {
-        return this.getFileType();
+        return this.fileType;
     }
 }
 

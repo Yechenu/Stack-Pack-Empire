@@ -2,6 +2,7 @@ package com.okta.developer.ADP_Capstone.FormI9.service;
 
 
 import com.okta.developer.ADP_Capstone.FormI9.entity.Document;
+import com.okta.developer.ADP_Capstone.FormI9.exception.FileNotFoundException;
 import com.okta.developer.ADP_Capstone.FormI9.exception.FileStorageException;
 import com.okta.developer.ADP_Capstone.FormI9.repository.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +25,10 @@ public class FileStorageService {
     @Autowired
     private DocumentRepository documentRepo;
 
-    //store(file): receives MultipartFile object, transform to Document object
+    //saveFile(file): receives MultipartFile object, transform to Document object
     // and save it to Database
 
-    public Document store(MultipartFile file) {
+    public Document saveFile(MultipartFile file) {
 
         //Retrieves document Name from the user and stores in fileName string
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
@@ -44,13 +45,14 @@ public class FileStorageService {
             return documentRepo.save(document); //save document in db
 
         }catch(IOException e) {
-            throw new FileStorageException("Could not store file " + fileName + ". Please try again!", e);
+            throw new FileStorageException("Could not saveFile file " + fileName + ". Please try again!", e);
         }
 
     }
     //retrieve a Document object by provided Id
-    public Document getFile(Long fileID) {
-        return documentRepo.findById(fileID).get();
+    public Document getFile(String fileID) {
+        return documentRepo.findById(fileID)
+                  .orElseThrow(() -> new FileNotFoundException("File not found with id " + fileID));
     }
 /*
      //getAllFiles(): returns all stored files as list of code>FileDB objects

@@ -28,10 +28,10 @@ public class FileDownloadController {
 
 	  //Pass the file name and HttpServlet request through "downloadFile" parameters
 	    @GetMapping("/downloadFile/{fileName:.+}")
-	    public ResponseEntity< Resource > downloadFile(@PathVariable Long documentID, HttpServletRequest request) {
+	    public ResponseEntity< Resource > downloadFile(@PathVariable String fileName, HttpServletRequest request) {
 	        
-	    	//Retrieve a Document file name object by it's fileID and store into Document object
-	        Document fileDB = fileStorageService.getFile(documentID);
+	    	//Retrieve a Document file name object by its fileID and saveFile into Document object
+	        Document fileDB = fileStorageService.getFile(fileName);
 
 
 	        return ResponseEntity.ok()

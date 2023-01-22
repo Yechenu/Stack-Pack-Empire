@@ -1,9 +1,12 @@
 package com.okta.developer.ADP_Capstone.FormI9.exception;
 
 
+import java.io.Serial;
+
 
 public class FileStorageException extends RuntimeException {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     public FileStorageException(String message) {
