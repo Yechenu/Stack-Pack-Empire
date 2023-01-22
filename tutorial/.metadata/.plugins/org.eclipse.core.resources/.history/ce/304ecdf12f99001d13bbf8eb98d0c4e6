@@ -1,0 +1,7 @@
+package springboot.api.tutorial.entity;
+
+
+public class Tutorial {
+	
+
+}

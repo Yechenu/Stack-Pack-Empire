@@ -1,65 +1,112 @@
 package com.okta.developer.ADP_Capstone.FormI9.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.Date;
 
-@Builder
+/*Document.java
+ * This entity file contains the database blueprint of the user table
+ *  - LOB is datatype for storing large object data.
+ *  - JoinColumn annotation to configure the name of the column in the users table
+ *   that maps to the primary key in the address table.
+ *   If we don't provide a name, Hibernate will follow some rules to select a default one.
+ *
+ * @Diamond Brown
+ * */
+
+
+/*Document.java
+ * This entity file contains the database blueprint of the user table
+ *  - LOB is datatype for storing large object data.
+ *  - JoinColumn annotation to configure the name of the column in the users table
+ *   that maps to the primary key in the address table.
+ *   If we don't provide a name, Hibernate will follow some rules to select a default one.
+ *
+ * @Diamond Brown
+ * */
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "Document")
-@Table(name = "i9_documents")
+@Entity
+@Table(name = "Document_I9")
+@EntityListeners(AuditingEntityListener.class)
 public class Document {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="documentID", nullable=false)
-    private Integer documentID;
+    private Long documentID;
 
-    @Column(name = "documentName", length=60)
-    private String documentName;
+    @Column(name= "documentTitle", length = 60)
+    private String  documentTitle;
 
-    @Column(name = "formID", length=60)
-    private Integer formID;
-
-    @Column(name = "EmployeeID", length=60)
-    private Integer employeeID;
-
-    @Column(name = "ListType", length=60)
+    @Column(name = "listType", length=60)
     private String listType;
 
-    @Column(name = "IssuingAuthority", length=60)
+    @Column(name = "issuingAuthority", length=60)
     private String issuingAuthority;
 
-    @Column(name = "DocumentNumber", length=60)
-    private Integer documentNumber;
+    @Column(name = "documentNumber", length=60)
+    private Long documentNumber;
 
-    @Column(name = "ExpirationDate", length=60)
+
+    @Column(name = "expirationDate", length=60)
     private Date expirationDate;
 
-    @Column(name = "AdditionalInfo", length=60)
+    @Column(name = "additionalInfo", length=60)
     private String additionalInfo;
 
-    @Column(name= "fileName")
+    @Column (name= "fileName")
     private String fileName;
 
-    @Column (name= "fileType")
+    @Column (name="fileType")
     private String fileType;
 
     @Lob
-    @Column(name = "filePDF", length=60)
-    private byte[] filePDF;
+    @Column(name ="fileAttachment", length=100000)
+    private byte[] fileAttachment;
 
-    @Column(name = "created_At", length=60)
+    @CreationTimestamp
+    @Column(name = "created_At", length=60,  nullable = false)
     private Timestamp created_At;
 
-    @Column(name = "Modified_At", length=60)
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "modified_At", length=60, nullable = false)
     private Timestamp modified_At;
+
+    public Document(String fileName, String fileType, byte[] fileAttachment) {
+        this.fileName= fileName;
+        this.fileType= fileType;
+        this.fileAttachment= fileAttachment;
+    }
+
+    public String getFileName() {
+
+        return this.fileName;
+    }
+    public byte[] getFileAttachment() {
+        return this.fileAttachment;
+    }
+
+    public String getDocumentID() {
+
+        return String.valueOf(this.documentID);
+    }
+
+    public String getFileType() {
+        return this.getFileType();
+    }
 }
-
-
 
