@@ -6,7 +6,7 @@ import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.sql.Timestamp;
-import java.util.Date;
+import java.sql.Date;
 
 @Builder
 @AllArgsConstructor
@@ -14,7 +14,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString(onlyExplicitlyIncluded = true)
-@Entity(name = "Section_1")
+@Entity
 @Table(name = "section_1")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "created_at", "updated_at" }, allowGetters = true)
@@ -22,15 +22,15 @@ public class Section_1 {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Section1_ID", nullable = false, length = 20)
     private Long section1_ID;
 
-    @Column(name = "EmployeeID", length=60)
-    private Integer employeeID;
+    @Column(name = "EmployeeID", length=60, nullable = false)
+    private Long employeeID;
 
-    @Column(name = "FormID", length=60)
-    private Integer formID;
+    @Column(name = "FormID", length=60,nullable = false)
+    private Long formID;
 
     @Column(name = "Lname", length=60)
     private String lName;
@@ -57,7 +57,7 @@ public class Section_1 {
     private String state;
 
     @Column(name = "ZipCode", length=60)
-    private Integer zipCode;
+    private String zipCode;
 
     @Column(name = "DOB", length=60)
     private Date dob;
@@ -69,7 +69,7 @@ public class Section_1 {
     private String email;
 
     @Column(name = "Telephone", length=60)
-    private Integer telephone;
+    private String telephone;
 
     @Column(name = "AttestationNum", length=60)
     private Integer attestationNum;
@@ -83,7 +83,7 @@ public class Section_1 {
     @Column(name = "FormI94_AdmissionNum", length=60)
     private Integer formI94_admissionNum;
 
-    @Column(name = "Esign", length=60)
+    @Column(name = "Esign", length=60, nullable = false)
     private Boolean eSign;
 
     @Column(name = "PreparerCert", length=60)
@@ -108,7 +108,7 @@ public class Section_1 {
     private String preparerState;
 
     @Column(name = "PreparerZip", length=60)
-    private Integer preparerZip;
+    private String preparerZip;
 
     @Column(name = "Created_At", length=60)
     private Timestamp created_At;

@@ -12,10 +12,10 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @ToString(onlyExplicitlyIncluded = true)
-@Entity(name = "Form_I9")
+@Entity
 @Table(name = "form_I9")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER)
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER)
 public class Form_I9 {
     @Id
     @GeneratedValue
