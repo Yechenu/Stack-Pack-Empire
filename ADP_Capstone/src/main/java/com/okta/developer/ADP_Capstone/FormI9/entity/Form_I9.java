@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Setter
 @ToString(onlyExplicitlyIncluded = true)
 @Entity(name = "Form_I9")
-@Table(name = "form_I9")
+@Table(name = "form_i9")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER)
 public class Form_I9 {
@@ -38,7 +38,8 @@ public class Form_I9 {
     @Column(name = "Created_At", length=60)
     private Timestamp created_At;
 
-
+    @Column(name = "ReviewedBy", length=60)
+    private Timestamp reviewedBy;
 }
 
 
