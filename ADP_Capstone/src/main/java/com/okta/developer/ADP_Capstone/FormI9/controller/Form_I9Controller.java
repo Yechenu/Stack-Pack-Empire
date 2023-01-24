@@ -20,25 +20,25 @@ public class Form_I9Controller {
     @Autowired
     private FormI9Repository repository;
 
-    @GetMapping ("/Form I9")
+    @GetMapping ("/FindGet")
     public List<Form_I9> all() {
         return repository.findAll();
     }
 
-    @PostMapping ("/Form I9")
+    @PostMapping ("/CreatePost")
     public Form_I9 createForm_I9(@RequestBody Form_I9 form_i9) {
         return repository.save(form_i9);
 
     }
 
-    @GetMapping ("/Form I9/{id}" )
+    @GetMapping ("/Find/{id}" )
     public ResponseEntity<Form_I9> getForm_I9ById(@PathVariable  long id){
         Form_I9 form_i9 = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Form I9 not exist with id:" + id));
         return ResponseEntity.ok(form_i9);
     }
 
-    @PutMapping("/Form I9/{id}" )
+    @PutMapping("/Update/{id}" )
     public ResponseEntity<Form_I9> updateForm_I9(@PathVariable long id, @RequestBody Form_I9 form_i9Details) {
         Form_I9 updateForm_I9 = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Form I9 not exist with id: " + id));
