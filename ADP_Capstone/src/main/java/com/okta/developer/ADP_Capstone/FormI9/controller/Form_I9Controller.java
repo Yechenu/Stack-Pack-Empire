@@ -14,7 +14,7 @@ import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/capstoneApi/Form I9")
+@RequestMapping("/capstoneApi/FormI9")
 public class Form_I9Controller {
 
     @Autowired
