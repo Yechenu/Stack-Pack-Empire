@@ -1,17 +1,22 @@
 package com.okta.developer.ADP_Capstone.AppUser.controller;
 
-import com.okta.developer.ADP_Capstone.AppUser.dto.LoginData;
-import com.okta.developer.ADP_Capstone.AppUser.dto.RegisterData;
+
+import com.okta.developer.ADP_Capstone.AppUser.Security.jwt.JwtUtils;
+import com.okta.developer.ADP_Capstone.AppUser.Security.services.UserDetailsImpl;
 import com.okta.developer.ADP_Capstone.AppUser.entity.AppUser;
 import com.okta.developer.ADP_Capstone.AppUser.entity.ERole;
 import com.okta.developer.ADP_Capstone.AppUser.entity.Role;
+import com.okta.developer.ADP_Capstone.AppUser.payload.request.LoginRequest;
+import com.okta.developer.ADP_Capstone.AppUser.payload.request.RegisterRequest;
+import com.okta.developer.ADP_Capstone.AppUser.payload.response.MessageResponse;
+import com.okta.developer.ADP_Capstone.AppUser.payload.response.UserInfoResponse;
 import com.okta.developer.ADP_Capstone.AppUser.repository.AppUserRepository;
 import com.okta.developer.ADP_Capstone.AppUser.repository.RoleRepository;
-import com.okta.developer.ADP_Capstone.AppUser.service.UserService;
-import com.okta.developer.ADP_Capstone.Employee.repository.EmployeeRepository;
 import jakarta.validation.Valid;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,128 +25,124 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
-
-@CrossOrigin("*")
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/capstone/api/auth")
+@RequestMapping("/capstoneApi/auth")
 public class AuthController {
+    @Autowired
+    AuthenticationManager authenticationManager;
 
     @Autowired
-    private AuthenticationManager authenticationManager;
-    private final UserService userService;
-
-    private RoleRepository roleRepo;
+    AppUserRepository appUserRepository;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-    private final AppUserRepository appUserRepo;
-    private final EmployeeRepository employeeRepo;
+    RoleRepository roleRepository;
 
     @Autowired
-    //The UserService object will be injected into the AuthController at run time
-    public AuthController(UserService userService,
-                          AppUserRepository appUserRepo,
-                          EmployeeRepository employeeRepo) {
-        this.userService = userService;
-        this.appUserRepo = appUserRepo;
-        this.employeeRepo = employeeRepo;
-    }
+    PasswordEncoder encoder;
 
-    // handler method that handles the Login/Sign in REST API:
-    //  - check existing username/email
-    //  - create new User (with ROLE_USER if not specifying role)
-    //  - save User to database using UserRepository
+    @Autowired
+    JwtUtils jwtUtils;
+
     @PostMapping("/login")
-    public ResponseEntity<String> authenticateUser(@RequestBody LoginData loginData){
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                loginData.getUsername(), loginData.getPassword()));
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+
+        Authentication authentication = authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new ResponseEntity<>("User signed-in successfully!.", HttpStatus.OK);
+
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+
+        ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
+
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(item -> item.getAuthority())
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
+                .body(new UserInfoResponse(userDetails.getUserId(),
+                        userDetails.getUsername(),
+                        userDetails.getEmail(),
+                        roles));
     }
-    // handler method that handles the Register/SignUp REST API:
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterData registerData){
+    public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest registerRequest ) {
+//        if (appUserRepository.existsByEmail(signUpRequest.getEmail())) {
+//            return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
+//        }
 
-        // add check for employee email exists in a DB. if it DOES NOT...
-        if(appUserRepo.existsByUsername(registerData.getUsername())){
-            return new ResponseEntity<>("Error: Username is already taken!", HttpStatus.BAD_REQUEST);
+        if (appUserRepository.existsByEmail(registerRequest.getEmail())) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
         }
 
-        // add check for username email exists in DB
-        if(appUserRepo.existsByEmail(registerData.getEmail())){
-            return new ResponseEntity<>("Error: Email is already taken!", HttpStatus.BAD_REQUEST);
-        }
-        //getEmployeeID, getRole, getEmail, getPassword from the appUser
-        // and set in the appUser fields in the db
-        AppUser newUser = new AppUser();
-        newUser.setFname(registerData.getFname());
-        newUser.setLname(registerData.getLname());
-        newUser.setEmail(registerData.getEmail());
-        newUser.setPassword(passwordEncoder.encode(registerData.getPassword()));
-         String strRoles = registerData.getRole();
-        Role userRole = roleRepo.findByRole(ERole.valueOf("ROLE_" + strRoles));
-        newUser.setRole(Collections.singleton(userRole));
+        // Create new user's account
+        String fName= registerRequest.getFirstName();
+        String lName= registerRequest.getLastName();
+        String usernamePartial= fName.charAt(0) + StringUtils.substring(lName,0,5);
+        String email=registerRequest.getEmail();
+        String password=  encoder.encode(registerRequest.getPassword());
+        AppUser user = new AppUser();
+        user.setFirstName(fName);
+        user.setLastName(lName);
+        user.setUsername(usernamePartial);
+        user.setEmail(email);
+        user.setPassword(password);
 
-        //Save user entity into DB via userRepository "save()" method
-        appUserRepo.save(newUser);
-        return  new ResponseEntity<>("Employee portal account activated successfully", HttpStatus.OK);
-        }
+        Set<String> strRoles = registerRequest.getRole();
+        Set<Role> roles = new HashSet<>();
 
-        // handler method to handle home page request
-    @GetMapping("/index")
-    public String home(){
-        return "index";
-    }
-    // handler method to handle login request
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    //handler method to handle user registration form request
-
-
-    // handler method to handle user registration form request
-    /*@GetMapping("/activate")
-    public String showActivationForm(Model model){
-        // create model object to store form data
-        UserDTO user = new UserDTO();
-        model.addAttribute("user", user);
-        return "activate";
-    }
-    // handler method to handle user registration form submit request
-    @PostMapping("/activate/save")
-    public String activation(@Valid @ModelAttribute("user") UserDTO userDto,
-                               BindingResult result,
-                               Model model){
-        AppUser existingUser = userService.findUserByEmail(userDto.getEmail());
-        Employee existingEmployee= userService.findByEmail((userDto.getEmail()));
-//if euser, .getEmail , is not NULL nor an NOT an empty field...
-        if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
-            result.rejectValue("email", null,
-                    "There is already an account activated with the same email");
+        if (strRoles == null) {
+            Role userRole = roleRepository.findByName(ERole.ROLE_APPLICANT)
+                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            roles.add(userRole);
         } else {
-            assert existingUser != null;
-            if (!existingUser.equals(existingEmployee)) {
-                result.rejectValue("email", "This email is not an active ADP email address");
-            }
-        }
+            strRoles.forEach(role -> {
+                switch (role) {
+                    case "reviewer":
+                        Role reviewerRole = roleRepository.findByName(ERole.ROLE_REVIEWER)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(reviewerRole);
 
-        if(result.hasErrors()){
-            model.addAttribute("user", userDto);
-            return "/activate";
-        }
+                        break;
+                    case "employer":
+                        Role employerRole = roleRepository.findByName(ERole.ROLE_EMPLOYER)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(employerRole);
 
-        userService.registerUser(userDto);
-        return "redirect:/activate?success";
+                        break;
+                    case "auditor":
+                        Role auditorRole = roleRepository.findByName(ERole.ROLE_AUDITOR)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(auditorRole);
+
+                    default:
+                        Role userRole = roleRepository.findByName(ERole.ROLE_APPLICANT)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(userRole);
+                }
+            });
+        }
+        user.setRoles(roles);
+        appUserRepository.save(user);
+       String username= usernamePartial + user.getUserId(); //generate username
+        user.setUsername(username);
+        appUserRepository.updateUsernameBy(username);
+
+
+
+        return ResponseEntity.ok(new MessageResponse("User registered successfully! Your username name: "+ username));
     }
-    // handler method to handle list of users --> Use this method to display employees
-    /*@GetMapping("/users")
-    public String users(Model model){
-        List<UserDto> users = userService.findAllUsers();
-        model.addAttribute("users", users);
-        return "users";*/
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logoutUser() {
+        ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .body(new MessageResponse("You have logged out successfully!"));
     }
+}

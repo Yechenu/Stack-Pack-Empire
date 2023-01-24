@@ -2,31 +2,32 @@ package com.okta.developer.ADP_Capstone.AppUser.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 /*User.java
 * This entity file contains the database blueprint of the user table
 * 7 fields: userId,fname, lname, username, email, password, roles.
-* @Diamond Brown
+*
+* @Diamond Brocom.okta.developer.ADP_Capstone.AppUser.entity.AppUser findByFirstName(java.lang.String firstName);com.okta.developer.ADP_Capstone.AppUser.entity.AppUser findByFirstName(java.lang.String firstName);wn
 * */
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "app_user")
+@Table(name = "app_user",
+        uniqueConstraints = {
+        @UniqueConstraint(columnNames = "email")
+})
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "created_at", "updated_at" }, allowGetters = true)
 public class AppUser {
@@ -36,42 +37,45 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userID", nullable = false, length = 20)
     private Long userId;
-
+    // @Column(name = "firstName", length = 20, nullable = false)
     @NotBlank
-    @Column(name = "fname", length = 20)
-    private String fname;
-
+    @Size(min = 2, max = 40)
+    private String firstName;
+    // @Column(name = "lastName", length = 20, nullable = false)
     @NotBlank
-    @Column(name = "lname", length = 20)
-    private String lname;
+    @Size(min = 2, max = 40)
+    private String lastName;
+   /* @Column (name = "employeeID")
+    private Employee employeeID;*/
 
+    // @Column(name = "email", length = 60, unique = true, nullable = false)
     @NotBlank
-    @Column(name= "username", length = 20, unique = true)
-    private String username;
-
-    @NotBlank
-    @Column(name = "email", length = 60, unique = true, nullable = false)
+    @Size(max = 50)
+    @Email
     private String email;
-
+    //@Column(name = "username", length = 20)
     @NotBlank
-    @Column(name = "password", length = 60, nullable = false)
+    private String username;
+    //@Column(name = "password", length = 60, nullable = false)
+    @NotBlank
+   // @Size(min = 6, max = 40)
     private String password;
-
-    @CreatedDate
-    private Date created_at;
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date updated_at;
-
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "userID", referencedColumnName = "userID"),
-            inverseJoinColumns = @JoinColumn(name = "roleID", referencedColumnName = "roleID"))
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-
-    public void setRole(Set<Role> singleton) {
+    public AppUser(String firstName, String lastName,
+                   String email, String password, String s) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+       // this.username= username;
+        this.email = email;
+        this.password = password;
     }
+
+
 }
+

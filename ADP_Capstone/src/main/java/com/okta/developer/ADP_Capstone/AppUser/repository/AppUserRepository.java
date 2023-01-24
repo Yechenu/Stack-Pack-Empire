@@ -2,7 +2,10 @@ package com.okta.developer.ADP_Capstone.AppUser.repository;
 
 import com.okta.developer.ADP_Capstone.AppUser.entity.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -14,20 +17,19 @@ import java.util.Optional;
 * @Diamond Brown
  */
 @Repository
+@Transactional(readOnly = true)
 public interface AppUserRepository extends JpaRepository<AppUser, Long> {
+    @Transactional
+    @Modifying
+    @Query("update AppUser a set a.username = ?1")
+    void updateUsernameBy(String username);
+
+
 //A repository that finds the users (logins) by email
+Optional<AppUser> findByUsername(String username);
 
-    Optional<AppUser> findByUsername(String username);
-    Optional<AppUser> findByPassword(String password);
-    // AppUser findByEmail(String email);
-
-    //Returns boolean
     Boolean existsByUsername(String username);
+
     Boolean existsByEmail(String email);
-
-    Boolean existsByPassword(String password);
-
-
-
 
 }
