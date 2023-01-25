@@ -1,8 +1,9 @@
-package com.okta.developer.ADP_Capstone.FormI9.service;
+package com.okta.developer.ADP_Capstone.FormI9.Form.service;
 
 
-import com.okta.developer.ADP_Capstone.FormI9.entity.Section_1;
-import com.okta.developer.ADP_Capstone.FormI9.repository.Section_1Repository;
+
+import com.okta.developer.ADP_Capstone.FormI9.Form.entity.Section_1;
+import com.okta.developer.ADP_Capstone.FormI9.Form.repository.Section_1Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,5 @@ public class Section1Service {
 
 
     public void addNewSection1(Section_1 section_1) {
-       
     }
 }
