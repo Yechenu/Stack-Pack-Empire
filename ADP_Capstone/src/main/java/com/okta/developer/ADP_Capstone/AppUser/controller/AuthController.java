@@ -1,8 +1,6 @@
 package com.okta.developer.ADP_Capstone.AppUser.controller;
 
 
-import com.okta.developer.ADP_Capstone.AppUser.Security.jwt.JwtUtils;
-import com.okta.developer.ADP_Capstone.AppUser.Security.services.UserDetailsImpl;
 import com.okta.developer.ADP_Capstone.AppUser.entity.AppUser;
 import com.okta.developer.ADP_Capstone.AppUser.entity.ERole;
 import com.okta.developer.ADP_Capstone.AppUser.entity.Role;
@@ -12,60 +10,56 @@ import com.okta.developer.ADP_Capstone.AppUser.payload.response.MessageResponse;
 import com.okta.developer.ADP_Capstone.AppUser.payload.response.UserInfoResponse;
 import com.okta.developer.ADP_Capstone.AppUser.repository.AppUserRepository;
 import com.okta.developer.ADP_Capstone.AppUser.repository.RoleRepository;
+import com.okta.developer.ADP_Capstone.Security.config.services.UserDetailsImpl;
 import jakarta.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseCookie;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-@CrossOrigin(origins = "*", maxAge = 3600)
+
+//@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/capstoneApi/auth")
 public class AuthController {
     @Autowired
     AuthenticationManager authenticationManager;
-
     @Autowired
     AppUserRepository appUserRepository;
-
     @Autowired
     RoleRepository roleRepository;
-
     @Autowired
-    PasswordEncoder encoder;
-
-    @Autowired
-    JwtUtils jwtUtils;
+    PasswordEncoder passwordEncoder;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-
         Authentication authentication = authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+                .authenticate(new UsernamePasswordAuthenticationToken(
+                        loginRequest.getUsername(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-
-        ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
-
+        UserDetailsImpl userDetails = (UserDetailsImpl ) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-                .body(new UserInfoResponse(userDetails.getUserId(),
+        return
+                ResponseEntity.ok().header(String.valueOf(HttpStatus.OK)).body(new UserInfoResponse(
+                        userDetails.getUserId(),
                         userDetails.getUsername(),
                         userDetails.getEmail(),
                         roles));
@@ -84,15 +78,14 @@ public class AuthController {
         // Create new user's account
         String fName= registerRequest.getFirstName();
         String lName= registerRequest.getLastName();
-        String usernamePartial= fName.charAt(0) + StringUtils.substring(lName,0,5);
-        String email=registerRequest.getEmail();
-        String password=  encoder.encode(registerRequest.getPassword());
         AppUser user = new AppUser();
         user.setFirstName(fName);
         user.setLastName(lName);
-        user.setUsername(usernamePartial);
-        user.setEmail(email);
-        user.setPassword(password);
+        //gemerate username
+        user.setUsername(fName.charAt(0) + StringUtils.substring(lName,0,5) +
+                registerRequest.getEmail().length());
+        user.setEmail(registerRequest.getEmail());
+        user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
 
         Set<String> strRoles = registerRequest.getRole();
         Set<Role> roles = new HashSet<>();
@@ -130,19 +123,16 @@ public class AuthController {
         }
         user.setRoles(roles);
         appUserRepository.save(user);
-       String username= usernamePartial + user.getUserId(); //generate username
-        user.setUsername(username);
-        appUserRepository.updateUsernameBy(username);
 
 
 
-        return ResponseEntity.ok(new MessageResponse("User registered successfully! Your username name: "+ username));
+        return ResponseEntity.ok(new MessageResponse("User registered successfully! Your username name: "+ user.getUsername()));
     }
 
-    @PostMapping("/logout")
+   /* @PostMapping("/logout")
     public ResponseEntity<?> logoutUser() {
         ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
                 .body(new MessageResponse("You have logged out successfully!"));
-    }
+    }*/
 }

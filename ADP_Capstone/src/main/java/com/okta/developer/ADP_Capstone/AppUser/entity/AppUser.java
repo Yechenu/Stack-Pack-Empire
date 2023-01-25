@@ -12,13 +12,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.HashSet;
 import java.util.Set;
-
 /*User.java
-* This entity file contains the database blueprint of the user table
-* 7 fields: userId,fname, lname, username, email, password, roles.
-*
-* @Diamond Brocom.okta.developer.ADP_Capstone.AppUser.entity.AppUser findByFirstName(java.lang.String firstName);com.okta.developer.ADP_Capstone.AppUser.entity.AppUser findByFirstName(java.lang.String firstName);wn
-* */
+ * This entity file contains the database blueprint of the user table
+ * 7 fields: userId,fname, lname, username, email, password, roles.
+ *
+ * @Diamond Brocom.okta.developer.ADP_Capstone.AppUser.entity.AppUser findByFirstName(java.lang.String firstName);com.okta.developer.ADP_Capstone.AppUser.entity.AppUser findByFirstName(java.lang.String firstName);wn
+ * */
 
 @Getter
 @Setter
@@ -26,8 +25,9 @@ import java.util.Set;
 @Entity
 @Table(name = "app_user",
         uniqueConstraints = {
-        @UniqueConstraint(columnNames = "email")
-})
+                @UniqueConstraint(columnNames = "email"),
+                @UniqueConstraint(columnNames = "username")
+        })
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "created_at", "updated_at" }, allowGetters = true)
 public class AppUser {
@@ -58,7 +58,7 @@ public class AppUser {
     private String username;
     //@Column(name = "password", length = 60, nullable = false)
     @NotBlank
-   // @Size(min = 6, max = 40)
+    // @Size(min = 6, max = 40)
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -67,15 +67,5 @@ public class AppUser {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    public AppUser(String firstName, String lastName,
-                   String email, String password, String s) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-       // this.username= username;
-        this.email = email;
-        this.password = password;
     }
-
-
-}
 
