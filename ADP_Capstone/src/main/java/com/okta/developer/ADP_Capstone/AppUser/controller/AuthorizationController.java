@@ -7,34 +7,29 @@ import com.okta.developer.ADP_Capstone.AppUser.entity.Role;
 import com.okta.developer.ADP_Capstone.AppUser.payload.request.LoginRequest;
 import com.okta.developer.ADP_Capstone.AppUser.payload.request.RegisterRequest;
 import com.okta.developer.ADP_Capstone.AppUser.payload.response.MessageResponse;
-import com.okta.developer.ADP_Capstone.AppUser.payload.response.UserInfoResponse;
 import com.okta.developer.ADP_Capstone.AppUser.repository.AppUserRepository;
 import com.okta.developer.ADP_Capstone.AppUser.repository.RoleRepository;
 import com.okta.developer.ADP_Capstone.Security.config.services.UserDetailsImpl;
 import jakarta.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-//@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/capstoneApi/auth")
-public class AuthController {
+@RequestMapping("/capstoneApi/")
+public class AuthorizationController {
     @Autowired
     AuthenticationManager authenticationManager;
     @Autowired
@@ -58,11 +53,7 @@ public class AuthController {
                 .collect(Collectors.toList());
 
         return
-                ResponseEntity.ok().header(String.valueOf(HttpStatus.OK)).body(new UserInfoResponse(
-                        userDetails.getUserId(),
-                        userDetails.getUsername(),
-                        userDetails.getEmail(),
-                        roles));
+                ResponseEntity.ok().body(new MessageResponse("You've Successfully Logged in, " + userDetails.getUsername() + "!"));
     }
 
     @PostMapping("/register")
