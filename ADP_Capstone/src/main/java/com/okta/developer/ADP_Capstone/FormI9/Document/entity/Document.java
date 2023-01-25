@@ -23,17 +23,6 @@ import java.sql.Timestamp;
  * */
 
 
-/*Document.java
- * This entity file contains the database blueprint of the user table
- *  - LOB is datatype for storing large object data.
- *  - JoinColumn annotation to configure the name of the column in the users table
- *   that maps to the primary key in the address table.
- *   If we don't provide a name, Hibernate will follow some rules to select a default one.
- *
- * @Diamond Brown
- * */
-
-
 @AllArgsConstructor
 @Getter
 @Setter
