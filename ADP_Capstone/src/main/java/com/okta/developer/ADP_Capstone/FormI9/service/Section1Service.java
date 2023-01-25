@@ -24,6 +24,7 @@ public class Section1Service {
     }
 
 
-    public void addNewSection1(Section_1 section1) {
+    public void addNewSection1(Section_1 section_1) {
+       
     }
 }

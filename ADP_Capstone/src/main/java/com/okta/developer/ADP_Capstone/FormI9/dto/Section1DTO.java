@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 public class Section1DTO {
-    private Long section1_ID;
+   
     private Integer employeeID;
     private Integer formID;
     private String lName;
