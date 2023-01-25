@@ -1,68 +1,71 @@
 package com.okta.developer.ADP_Capstone.Employee.entity;
-	import javax.persistence.*;
-	import org.springframework.data.annotation.CreatedDate;
-	import org.springframework.data.annotation.LastModifiedDate;
-	import org.springframework.data.jpa.domain.support.AuditingEntityListener; 
-	import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.time.Instant;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 /* 
- * Location.java
+ * Employee.java
  * This file contains the employee entity for ADP employees
- * @Aladi
+ * 
  */
 
-	@Getter
-	@Setter
-	@NoArgsConstructor
-	@AllArgsConstructor
-	@Entity
-	@Table(name = "employee")
-	@EntityListeners(AuditingEntityListener.class)
-	@JsonIgnoreProperties(value = { "created_at", "updated_at" }, allowGetters = true)
-	public class Employee {  
-		@Id
-	  @GeneratedValue(strategy = GenerationType.IDENTITY) //Auto increments primary key
-		@Column(name="employeeID", nullable=false) // employeeid not null
-	  private Long employeeID;  
-		
-		@OneToOne(cascade = CascadeType.ALL) //One to one relationship btw employee and location
-		 @JoinColumn(name = "locationID" ,nullable=false)// Foreign key location table. not null
-	    private Location locationID; // instantiate location entity(object)
-		
-	 @Column(name = "role")
-	    private String role;
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "tbl_employee")
+@EntityListeners(AuditingEntityListener.class)
+public class Employee {
+	@Id // To provide a primary key of our entity
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto increments primary key
+	// @Column maps a column name to the field
+	@Column(name = "employeeID", nullable = false) // employeeid not null
+	private Long employeeID;
 
-	    @Column(name = "lName", length=60)
-	    private String lastName;
+	@OneToOne(cascade = CascadeType.ALL) // One to one relationship between employee and location
+	@JoinColumn(name = "location_id", referencedColumnName = "locationID") // Foreign key location table
+	private Location location; // instantiate location entity(object)
 
-	    @Column(name = "fName", length=60)
-	    private String firstName;
-	    
-	    @Column(name = "Email", length=60)
-	    private String email;
+	@Column(name = "Job_Title")
+	private String job_title;
 
-	    @Column(name = "Phone", length=20)
-	    private int phone;
+	@Column(name = "lName", length = 60)
+	private String lastName;
 
-	    @Column(name = "Address", length=60)
-	    private String address;
-	    
-	    @Column(name = "zipCode", length=60)
-	    private int ZipCode;
+	@Column(name = "fName", length = 60)
+	private String firstName;
 
-	    @Column(name = "Country", length=60)
-	    private String country;  @Column(nullable = false, updatable = false)
-	  @Temporal(TemporalType.TIMESTAMP)
-	  @CreatedDate
-	  private Date created_at;  @Column(nullable = false)
-	  @Temporal(TemporalType.TIMESTAMP)
-	  @LastModifiedDate
-	  private Date updated_at;  
-    }
+	@Column(name = "Phone", length = 60)
+	private String phone;
+
+	@Column(name = "Email", length = 60)
+	private String email;
+
+	@Column(nullable = false, updatable = false)
+	@CreatedDate
+	private Instant created_at;
+	
+	@Column(nullable = false)
+	@LastModifiedDate
+	private Instant updated_at;
+}
