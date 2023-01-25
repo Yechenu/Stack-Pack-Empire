@@ -1,7 +1,7 @@
-package com.okta.developer.ADP_Capstone.FormI9.controller;
+package com.okta.developer.ADP_Capstone.FormI9.Document.controller;
 
-import com.okta.developer.ADP_Capstone.FormI9.entity.Document;
-import com.okta.developer.ADP_Capstone.FormI9.service.FileStorageService;
+import com.okta.developer.ADP_Capstone.FormI9.Document.entity.Document;
+import com.okta.developer.ADP_Capstone.FormI9.Document.service.FileStorageService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;

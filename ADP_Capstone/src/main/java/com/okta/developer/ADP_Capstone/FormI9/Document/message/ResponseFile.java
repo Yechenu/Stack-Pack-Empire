@@ -1,4 +1,4 @@
-package com.okta.developer.ADP_Capstone.FormI9.message;
+package com.okta.developer.ADP_Capstone.FormI9.Document.message;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

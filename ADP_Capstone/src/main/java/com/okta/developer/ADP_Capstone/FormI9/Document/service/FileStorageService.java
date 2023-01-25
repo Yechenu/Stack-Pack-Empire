@@ -1,10 +1,10 @@
-package com.okta.developer.ADP_Capstone.FormI9.service;
+package com.okta.developer.ADP_Capstone.FormI9.Document.service;
 
 
-import com.okta.developer.ADP_Capstone.FormI9.entity.Document;
-import com.okta.developer.ADP_Capstone.FormI9.exception.FileNotFoundException;
-import com.okta.developer.ADP_Capstone.FormI9.exception.FileStorageException;
-import com.okta.developer.ADP_Capstone.FormI9.repository.DocumentRepository;
+import com.okta.developer.ADP_Capstone.FormI9.Document.entity.Document;
+import com.okta.developer.ADP_Capstone.FormI9.Document.exception.FileNotFoundException;
+import com.okta.developer.ADP_Capstone.FormI9.Document.exception.FileStorageException;
+import com.okta.developer.ADP_Capstone.FormI9.Document.repository.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

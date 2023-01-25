@@ -1,4 +1,4 @@
-package com.okta.developer.ADP_Capstone.FormI9.entity;
+package com.okta.developer.ADP_Capstone.FormI9.Form.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,10 +12,10 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @ToString(onlyExplicitlyIncluded = true)
-@Entity(name = "Form_I9")
-@Table(name = "form_i9")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER)
+@Entity
+@Table(name = "form_I9")
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER)
 public class Form_I9 {
     @Id
     @GeneratedValue
@@ -38,8 +38,7 @@ public class Form_I9 {
     @Column(name = "Created_At", length=60)
     private Timestamp created_At;
 
-    @Column(name = "ReviewedBy", length=60)
-    private Timestamp reviewedBy;
+
 }
 
 
