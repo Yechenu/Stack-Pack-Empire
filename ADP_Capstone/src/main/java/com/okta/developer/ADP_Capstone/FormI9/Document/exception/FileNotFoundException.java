@@ -1,4 +1,4 @@
-package com.okta.developer.ADP_Capstone.FormI9.exception;
+package com.okta.developer.ADP_Capstone.FormI9.Document.exception;
 
 
 import org.springframework.http.HttpStatus;

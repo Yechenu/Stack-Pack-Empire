@@ -1,4 +1,4 @@
-package com.okta.developer.ADP_Capstone.FormI9.entity;
+package com.okta.developer.ADP_Capstone.FormI9.Document.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
