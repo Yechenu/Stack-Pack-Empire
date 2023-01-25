@@ -1,4 +1,4 @@
-package com.okta.developer.ADP_Capstone.FormI9.entity;
+package com.okta.developer.ADP_Capstone.FormI9.Form.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;

@@ -4,7 +4,7 @@
     <persistence-units>
       <persistence-unit name="Default">
         <packages>
-          <package value="com.okta.developer.ADP_Capstone.FormI9.entity.Entity" />
+          <package value="com.okta.developer.ADP_Capstone.FormI9.Form.entity.Entity" />
         </packages>
       </persistence-unit>
     </persistence-units>
