@@ -61,7 +61,7 @@ public class Document {
     private Long documentNumber;
 
 
-    @Column(name = "expirationDate", length=60)
+    @Column(name = "expirationDate", length=6)
     private Date expirationDate;
 
     @Column(name = "additionalInfo", length=60)
@@ -78,12 +78,12 @@ public class Document {
     private byte[] fileAttachment;
 
     @CreationTimestamp
-    @Column(name = "created_At", length=60,  nullable = false)
+    @Column(name = "created_At", length=6,  nullable = false)
     private Timestamp created_At;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "modified_At", length=60, nullable = false)
+    @Column(name = "modified_At", length=6, nullable = false)
     private Timestamp modified_At;
     public Document() {
 
