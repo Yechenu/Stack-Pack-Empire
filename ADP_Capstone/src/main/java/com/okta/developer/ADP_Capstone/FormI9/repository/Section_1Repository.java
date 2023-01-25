@@ -7,3 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Section_1Repository extends JpaRepository <Section_1, Long> {
 }
+
+// Find by ID 

@@ -110,10 +110,10 @@ public class Section_1 {
     @Column(name = "PreparerZip", length=60)
     private Integer preparerZip;
 
-    @Column(name = "Created_At", length=60)
+    @Column(name = "Created_At", length=6)
     private Timestamp created_At;
 
-    @Column(name = "Modified_At", length=60)
+    @Column(name = "Modified_At", length=6)
     private Timestamp modified_At;
 
 
