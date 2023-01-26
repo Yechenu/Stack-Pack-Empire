@@ -26,22 +26,22 @@ public class Section_1 {
     @Column(name = "Section1_ID", nullable = false, length = 20)
     private Long section1_ID;
 
-    @Column(name = "EmployeeID", length=60, nullable = false)
+    @Column(name = "EmployeeID", length=60)
     private Long employeeID;
 
-    @Column(name = "FormID", length=60,nullable = false)
+    @Column(name = "FormID", length=60)
     private Long formID;
 
-    @Column(name = "Lname", length=60)
+    @Column(name = "LName", length=60)
     private String lName;
 
-    @Column(name = "Fname", length=60)
+    @Column(name = "FName", length=60)
     private String fName;
 
     @Column(name = "Middle", length=60)
     private String middle;
 
-    @Column(name = "Other_name", length=60)
+    @Column(name = "Other_Name", length=60)
     private String other_Name;
 
     @Column(name = "Address", length=60)
@@ -59,10 +59,10 @@ public class Section_1 {
     @Column(name = "ZipCode", length=60)
     private String zipCode;
 
-    @Column(name = "DOB", length=60)
+    @Column(name = "Dob", length=60)
     private Date dob;
 
-    @Column(name = "SSN", length=60)
+    @Column(name = "Ssn", length=60)
     private Integer ssn;
 
     @Column(name = "Email", length=60)
@@ -77,13 +77,13 @@ public class Section_1 {
     @Column(name = "ExpirationDate", length=60)
     private Date expirationDate;
 
-    @Column(name = "USCISnum", length=60)
+    @Column(name = "UscisNum", length=60)
     private Integer uscisNum;
 
-    @Column(name = "FormI94_AdmissionNum", length=60)
+    @Column(name = "FormI94_admissionNum", length=60)
     private Integer formI94_admissionNum;
 
-    @Column(name = "Esign", length=60, nullable = false)
+    @Column(name = "ESign", length=60, nullable = false, unique = true)
     private Boolean eSign;
 
     @Column(name = "PreparerCert", length=60)

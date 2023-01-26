@@ -18,8 +18,8 @@ import java.sql.Timestamp;
 //@DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER)
 public class Form_I9 {
     @Id
-    @GeneratedValue
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     @Column(name = "FormID", length=60)
     private Integer formID;
 
@@ -32,10 +32,10 @@ public class Form_I9 {
     @Column(name = "Section2_ID", length=60)
     private Integer section2_ID;
 
-    @Column(name = "Modified_At", length=60)
+    @Column(name = "Modified_At", length=6)
     private Timestamp modified_At;
 
-    @Column(name = "Created_At", length=60)
+    @Column(name = "Created_At", length=6)
     private Timestamp created_At;
 
 

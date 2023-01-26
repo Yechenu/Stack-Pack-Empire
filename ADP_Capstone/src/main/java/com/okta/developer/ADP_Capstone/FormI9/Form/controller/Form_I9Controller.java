@@ -41,7 +41,7 @@ public class Form_I9Controller {
         return ResponseEntity.ok(form_i9);
     }
 
-    @PutMapping("/Update/{id}" )
+    @PutMapping("/Update" )
     public ResponseEntity<Form_I9> updateForm_I9(@PathVariable long id, @RequestBody Form_I9 form_i9Details) {
         Form_I9 updateForm_I9 = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Form I9 not exist with id: " + id));

@@ -25,6 +25,8 @@ public class Section1Service {
     }
 
 
-    public void addNewSection1(Section_1 section_1) {
+    public Section_1 addNewSection1(Section_1 section_1) {
+        return section_1;
+
     }
 }
