@@ -1,13 +1,23 @@
 package com.okta.developer.ADP_Capstone.Blacklist.entity;
-import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import java.sql.Timestamp;
 
 
-import java.util.Date;
+import org.hibernate.annotations.CreationTimestamp;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
+@Data
 @NoArgsConstructor
 @Getter
 @Setter
@@ -22,21 +32,21 @@ public class Blacklist {
 
     public Integer blacklistID;
     public Integer employeeID;
-    private String lName;
-    private String fName;
+    private String firstname;
+    private String lastname;
     private String status;
-    @CreatedDate
-    private Date created_At;
-    @LastModifiedDate
-    private Date modified_At;
+   @CreationTimestamp
+    private Timestamp created_At;
+    @CreationTimestamp
+    private Timestamp modified_At;
 
 
-    public Blacklist(Integer blacklistID, Integer employeeID, String lName, String fName, String status, Date created_At, Date modified_At) {
+    public Blacklist(Integer blacklistID, int employeeID, String lastname, String firstname, String status, Timestamp created_At, Timestamp modified_At) {
 
         this.blacklistID = blacklistID;
         this.employeeID = employeeID;
-        this.lName = lName;
-        this.fName = fName;
+        this.lastname = lastname;
+        this.firstname = firstname;
         this.status = status;
         this.created_At = created_At;
         this.modified_At = modified_At;

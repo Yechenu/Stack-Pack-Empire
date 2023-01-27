@@ -10,7 +10,7 @@ public class Blacklist_Request implements Serializable {
 
     public final Integer blacklistID;
     public final Integer employeeID;
-    private final String lName;
-    private final String fName;
+    private final String lastname;
+    private final String firstname;
     private final String status;
 }

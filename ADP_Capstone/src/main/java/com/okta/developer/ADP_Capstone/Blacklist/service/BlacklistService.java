@@ -22,8 +22,8 @@ public class BlacklistService {
             Blacklist savedBlacklist = new Blacklist();
             savedBlacklist.setBlacklistID(request.getBlacklistID());
             savedBlacklist.setEmployeeID(request.getEmployeeID());
-            savedBlacklist.setLName(request.getLName());
-            savedBlacklist.setFName(request.getFName());
+            savedBlacklist.setLastname(request.getLastname());
+            savedBlacklist.setFirstname(request.getFirstname());
             savedBlacklist.setStatus(request.getStatus());
             return savedBlacklist;
     }

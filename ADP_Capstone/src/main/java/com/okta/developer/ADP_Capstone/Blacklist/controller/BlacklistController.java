@@ -31,6 +31,11 @@ public class BlacklistController {
     public List<Blacklist> getBlacklist(){
         return this.blacklistRepository.findAll();
     }
+    //count the number of Blacklist users in a database table
+    @RequestMapping("/users/count")
+    private long getNumberOfUsers(){
+        return blacklistRepository.count();
+    }
 
     // build create Blacklist REST API
     @PostMapping("/saveBlack")
