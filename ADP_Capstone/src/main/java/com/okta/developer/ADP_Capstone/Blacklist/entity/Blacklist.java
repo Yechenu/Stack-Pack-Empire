@@ -3,7 +3,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 
 import java.util.Date;
 
@@ -12,14 +12,13 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString(onlyExplicitlyIncluded = true)
-@Entity(name = "Blacklist")
+@Entity
 @Table(name = "blacklist")
-@EntityListeners(AuditingEntityListener.class)
 public class Blacklist {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     public Integer blacklistID;
     public Integer employeeID;

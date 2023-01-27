@@ -1,6 +1,6 @@
 package com.okta.developer.ADP_Capstone.Blacklist.payload;
 
-import com.okta.developer.ADP_Capstone.Blacklist.entity.Blacklist;
+
 import lombok.Data;
 import java.io.Serializable;
 
