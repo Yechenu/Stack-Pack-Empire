@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/capstoneApi/FormI9")
@@ -39,11 +40,12 @@ public class Form_I9Controller {
         return ResponseEntity.ok(form_i9);
     }
 
-    @PutMapping("/Update" )
+   
+   
+  /*  @PutMapping(value = "/update/{id}" )
     public ResponseEntity<Form_I9> updateForm_I9(@PathVariable long id, @RequestBody Form_I9 form_i9Details) {
         Form_I9 updateForm_I9 = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Form I9 not exist with id: " + id));
-
 
         updateForm_I9.setFormID(form_i9Details.getFormID());
         updateForm_I9.setEmployeeID(form_i9Details.getEmployeeID());
@@ -52,13 +54,14 @@ public class Form_I9Controller {
         updateForm_I9.setModified_At(form_i9Details.getModified_At());
         updateForm_I9.setCreated_At(form_i9Details.getCreated_At());
 
-
-
        repository.save(new Form_I9());
         return ResponseEntity.ok(updateForm_I9);
 
     }
-    @DeleteMapping
+
+*/
+
+    @DeleteMapping ( "/Delete/{id}")
         public ResponseEntity<Map<String, Boolean>> deleteForm_I9(@PathVariable Long id){
            Form_I9 form_i9 = repository.findById(id)
                     .orElseThrow(() -> new ResourceNotFoundException("Form not exist with id :" + id));

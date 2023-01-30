@@ -1,39 +1,41 @@
 package com.okta.developer.ADP_Capstone.FormI9.Section2.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.okta.developer.ADP_Capstone.FormI9.Form.entity.Form_I9;
+
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.sql.Date;
+import java.util.*;
 
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "section_2")
+@Table(name = "section2")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "created_at", "updated_at" }, allowGetters = true)
 public class Section_2 {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
+
     @Column(name = "Section2_ID", nullable = false)
-    private Long section_2ID;
+    private Long section2_ID;
 
     @Column(name = "EmployeeStartDate", length=60)
-    private Date employeeStartDate;
+    private String employeeStartDate;
 
     @Column(name = "EmployerSig", length=60)
-    private String employerSig;
+    private String employerSignature;
 
     @Column(name = "DateCompleted", length=60)
-    private Date dateCompleted;
+    private String dateCompleted;
 
     @Column(name = "EmployerTitle", length=60)
     private String employerTitle;
@@ -58,4 +60,31 @@ public class Section_2 {
 
     @Column(name = "EmployerZip", length=60)
     private String employerZip;
+    @CreationTimestamp
+    private Date created_At;
+    @CreationTimestamp
+    private Date modified_At;
+
+    @ManyToMany(mappedBy = "section_2s", fetch = FetchType.LAZY)
+    private Set<Form_I9> form_i9s = new HashSet<>();
+
+
+
+
+    public Section_2(String employeeStartDate, String employerSignature, String dateCompleted,
+                    String employerTitle, String employer_Lname, String employer_Fname,
+                    String employer_BusinessName, String employer_BusinessAddress, String employerCity,
+                    String employerState, String employerZip) {
+        this.employeeStartDate = employeeStartDate;
+        this.employerSignature = employerSignature;
+        this.dateCompleted = dateCompleted;
+        this.employerTitle = employerTitle;
+        this.employer_Lname = employer_Lname;
+        this.employer_Fname = employer_Fname;
+        this.employer_BusinessName = employer_BusinessName;
+        this.employer_BusinessAddress = employer_BusinessAddress;
+        this.employerCity = employerCity;
+        this.employerState = employerState;
+        this.employerZip = employerZip;
+    }
 }
