@@ -6,10 +6,12 @@ import com.okta.developer.ADP_Capstone.AppUser.entity.ERole;
 import com.okta.developer.ADP_Capstone.AppUser.entity.Role;
 import com.okta.developer.ADP_Capstone.AppUser.payload.request.LoginRequest;
 import com.okta.developer.ADP_Capstone.AppUser.payload.request.RegisterRequest;
+import com.okta.developer.ADP_Capstone.AppUser.payload.response.JwtResponse;
 import com.okta.developer.ADP_Capstone.AppUser.payload.response.MessageResponse;
 import com.okta.developer.ADP_Capstone.AppUser.repository.AppUserRepository;
 import com.okta.developer.ADP_Capstone.AppUser.repository.RoleRepository;
-import com.okta.developer.ADP_Capstone.Security.config.services.UserDetailsImpl;
+import com.okta.developer.ADP_Capstone.Security.jwt.JwtUtils;
+import com.okta.developer.ADP_Capstone.Security.services.UserDetailsImpl;
 import jakarta.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,7 @@ import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/capstoneApi/")
+@RequestMapping("/capstoneApi/auth")
 public class AuthorizationController {
     @Autowired
     AuthenticationManager authenticationManager;
@@ -38,6 +40,8 @@ public class AuthorizationController {
     RoleRepository roleRepository;
     @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
+    JwtUtils jwtUtils;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -46,14 +50,18 @@ public class AuthorizationController {
                         loginRequest.getUsername(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
+        String jwt = jwtUtils.generateJwtToken(authentication);
 
         UserDetailsImpl userDetails = (UserDetailsImpl ) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
-        return
-                ResponseEntity.ok().body(new MessageResponse("You've Successfully Logged in, " + userDetails.getUsername() + "!"));
+        return ResponseEntity.ok(new JwtResponse(jwt,
+                userDetails.getUserId(),
+                userDetails.getUsername(),
+                userDetails.getEmail(),
+                roles));
     }
 
     @PostMapping("/register")
