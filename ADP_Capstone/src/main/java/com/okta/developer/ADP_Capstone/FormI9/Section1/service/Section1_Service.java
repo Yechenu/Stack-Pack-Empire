@@ -14,7 +14,7 @@ public class Section1_Service {
     Section1_Repository section1_repository;
 
     public Section1_Service(Section1_Repository section1_repository){
-        this.section1_repository=section1_repository;
+        this.section1_repository = section1_repository;
     }
 
     public  Section1  setSection1(Section1_Request request) {
