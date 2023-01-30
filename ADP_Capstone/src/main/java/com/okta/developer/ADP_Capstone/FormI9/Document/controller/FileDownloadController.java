@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * */
 
 @RestController
-@RequestMapping ("/capstoneApi/document")
+@RequestMapping ("/capstoneApi/formI9/document")
 public class FileDownloadController {
 	
 	  @Autowired

@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * 
  * */
 @RestController
-@RequestMapping ("/capstoneApi/document")
+@RequestMapping ("/capstoneApi/formI9/document")
 public class FileUploadController {
 
     @Autowired
@@ -39,7 +39,7 @@ public class FileUploadController {
          String fileDownloadUri = "";
         //Store download URI from the following info
          fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-            .path("/capstoneApi/document/downloadFile/")
+            .path("/capstoneApi/formI9/document/downloadFile/")
             .path(fileName.getDocumentID())
             .toUriString();
         

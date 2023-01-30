@@ -1,71 +1,58 @@
-import React, { useRef } from "react";
-import  {useState} from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ReactComponent as Image } from "../assets/Login.svg";
 import axios from "axios";
-// import Select from "react-dropdown-select";
+import { useNavigate } from "react-router-dom";
 import "./registration.css";
-
-
-function RegisterForm() {
+import { Button } from "react-bootstrap"
+//const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const REGISTER_URL = '/register';
+// function RegisterForm() {
+//   
+const RegisterForm = () => {
+  //getters & setters for field values
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
+    register, handleSubmit, formState: { errors },
   } = useForm();
-  
-//  added to validate password -DB
-  const password = useRef({});
-    password.current = ("password", "");
-  const onSubmit = async (data) => { 
-    // const userData = JSON.parse(localStorage.getItem(data.email));
-  
-    const response = await axios.post("/capstoneApi/register", data);
-    //initialize appUser variable/object
-  
-    
-    
-    
-  //   if (userData) {
-  //     // getItem can return actual value or null
-  //     if (userData.password === data.password) {
-  //       console.log(userData.name + " You Are Successfully Registered");
-  //     } else {
-  //       console.log("Email or Password is not matching with our record");
-  //     }
-  //   } else {
-  //     console.log("Email or Password is not matching with our record");
-  //   }
-  // };
-  // The applicant doesn't need to choose their role when they register -DB
-  // const options = [
-  //   {
-  //     value: 1,
-  //     label: "Applicant",
-  //   },
-  //   {
-  //     value: 2,
-  //     label: "Reviewer",
-  //   },
-  //   {
-  //     value: 3,
-  //     label: "Manager",
-  //   },
-  //   {
-  //     value: 4,
-  //     label: "Auditor",
-  //   },
-  // ];
-    
-  
+  const [loading, setLoading] = useState(false); //disables submit button while loading info. Sets load ing 
+  const navigate = useNavigate();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const confirmPassword = useRef({});
+  password.current = ("password", "");
+  const onSubmit = async (data) => {
+
+    const response = await axios.post(REGISTER_URL,
+      JSON.stringify({ firstName, lastName, email, password }),
+      {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true
+      }
+    );
+    console.log(response?.data);
+    console.log(response?.accessToken);
+    console.log(JSON.stringify(response))
+
+    //clear state and controlled inputs
+    //need value attrib on inputs for this
+    setFirstName('');
+    setLastName('');
+    setEmail('');
+    setPassword('');
+
+  } 
+
   return (
-    <div className="login">
+    <div className="register">
       <Image />
       <div className="flex-container">
         <span className="adp-onboarding">ADP Onboarding</span>
         <span className="login-1">Registration</span>
         <div className="flex-container-1">
-          <form className="App" onSubmit={handleSubmit(onSubmit)}>
+          <form className="App" onSubmit={handleSubmit}>
             <div className="flex-container-2">
  {/* The applicant doesn't need to select a role when registering. -DB */}
               {/* <label>Select your role:</label>
@@ -76,19 +63,25 @@ function RegisterForm() {
               /> */}
               <label>First Name:</label>
                  <input
-                type="text"
-                name="firstName"
+                type="text" name="firstName" value={firstName}
+                //pass setFirstName method through onChange.  
+                onChange={(e) => setFirstName(e.target.value)}   //target.value = value from textfield
                 className="form-control mt-1"
                 {...register("text", { required: true })}
                 placeholder="Enter First Name"
               />
-              {errors.text && (
+               //if the field is empty
+              {errors.firstName && (
                 <span style={{ color: "red" }}>Field is mandatory </span>
               )}
+
+
               <label>Last Name:</label>
               <input
                 type="text"
                 name="lastName"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
                 className="form-control mt-1"
                 {...register("text", { required: true })}
                 placeholder="Enter Last Name"
@@ -162,5 +155,5 @@ function RegisterForm() {
     </div>
   );
 }
-}
+
 export default RegisterForm;
