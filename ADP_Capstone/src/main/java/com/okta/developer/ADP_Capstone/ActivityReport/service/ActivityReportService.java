@@ -21,9 +21,11 @@ public class ActivityReportService {
         ActivityReport savedActivityReport = new ActivityReport();
             savedActivityReport.setActivityreportID(request.getActivityreportID());
             savedActivityReport.setUser(request.getUser());
-            savedActivityReport.setActivity(request.getActivity());
-            savedActivityReport.setDate(request.getDate());
-            savedActivityReport.setDue_Date(request.getDue_Date());
+            savedActivityReport.setFormID(request.getFormID());
+            savedActivityReport.setCountry(request.getCountry());
+            savedActivityReport.setState(request.getState());
+            savedActivityReport.setCity(request.getCity());
+            savedActivityReport.setReviewer(request.getReviewer());
 
             return savedActivityReport;
     }

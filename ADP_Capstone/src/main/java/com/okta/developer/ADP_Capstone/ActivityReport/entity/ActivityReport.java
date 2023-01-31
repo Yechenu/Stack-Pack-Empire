@@ -20,15 +20,19 @@ public class ActivityReport {
 
     private Long activityreportID;
     private String User;
-    private String Activity;
-    private Date Date;
-    private Date Due_Date;
+    private int FormID;
+    private String Country;
+    private String State;
+    private String City;
+    private String Reviewer;
 
-    public ActivityReport(Long activityreportID, String user, String activity, Date date, Date due_Date) {
+    public ActivityReport(Long activityreportID, String user, int formID, String country, String state, String city, String reviewer) {
         this.activityreportID = activityreportID;
-        User = user;
-        Activity = activity;
-        Date = date;
-        Due_Date = due_Date;
+        this.User = user;
+        this.FormID = formID;
+        this.Country = country;
+        this.State = state;
+        this.City = city;
+        this.Reviewer = reviewer;
     }
 }
