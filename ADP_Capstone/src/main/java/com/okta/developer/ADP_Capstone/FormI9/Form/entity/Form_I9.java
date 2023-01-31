@@ -1,10 +1,15 @@
 package com.okta.developer.ADP_Capstone.FormI9.Form.entity;
 
 
+
+
+
+import com.okta.developer.ADP_Capstone.FormI9.Document.entity.Document;
 import jakarta.persistence.*;
 import lombok.*;
 
 import org.hibernate.annotations.CreationTimestamp;
+
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.okta.developer.ADP_Capstone.FormI9.Section1.entity.Section1;
@@ -28,7 +33,7 @@ public class Form_I9 {
   
 
     private Integer formID;
-    private Integer employeeID;
+   private Integer employeeID;
     private Long section1_ID;
     private Long section2_ID;
     private Integer documentID;
@@ -36,6 +41,7 @@ public class Form_I9 {
     private Timestamp modified_At;
     @CreationTimestamp
     private Timestamp created_At;
+
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "formi9_section1",
@@ -57,10 +63,13 @@ public class Form_I9 {
                             nullable = false, updatable = false)})
     private Set<Section_2> section_2s = new HashSet<>();
 
+    @OneToMany(mappedBy = "form_i9", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
 
 
 
-    
+
+    private Set<Document> documents;
 
     public Form_I9(Integer formID, Integer employeeID, Long section1_ID, Long section2_ID, Integer documentID, Timestamp modified_At, Timestamp created_At) {
         this.formID = formID;

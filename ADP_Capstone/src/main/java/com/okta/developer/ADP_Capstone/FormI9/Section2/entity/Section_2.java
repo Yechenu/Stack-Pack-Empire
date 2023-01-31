@@ -10,10 +10,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.*;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
-@Getter
 @Setter
+@Getter
 @ToString(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "section2")
@@ -65,10 +65,9 @@ public class Section_2 {
     @CreationTimestamp
     private Date modified_At;
 
-    @ManyToMany(mappedBy = "section_2s", fetch = FetchType.LAZY)
+   
+ @ManyToMany(mappedBy = "section_2s", fetch = FetchType.LAZY)
     private Set<Form_I9> form_i9s = new HashSet<>();
-
-
 
 
     public Section_2(String employeeStartDate, String employerSignature, String dateCompleted,

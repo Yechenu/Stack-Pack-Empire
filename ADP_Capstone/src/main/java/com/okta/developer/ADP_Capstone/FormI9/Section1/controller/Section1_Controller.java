@@ -46,7 +46,7 @@ public class Section1_Controller {
         Section1 savedSection1= section1_service.setSection1(request);
         section1_service.save(savedSection1);
         return ResponseEntity.created(
-                new URI("/section1/" + savedSection1.getSection1_id())).body(savedSection1).getBody();
+                new URI("/section1/" + savedSection1.getSection1_ID())).body(savedSection1).getBody();
     }
 
 }

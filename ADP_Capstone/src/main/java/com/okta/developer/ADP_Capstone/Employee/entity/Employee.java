@@ -1,90 +1,64 @@
 package com.okta.developer.ADP_Capstone.Employee.entity;
 
-public class Employee  {
+import java.time.Instant;
 
-    String role;
-    String lName;
-    String fName;
-    String email;
-    int phone;
-    String address;
-    int zipCode;
-    String country;
 
-    public Employee(String role, String lName, String fName,
-                    String email, int phone, String address,
-                    int zipCode, String country) {
-        this.role = role;
-        this.lName = lName;
-        this.fName = fName;
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
-        this.zipCode = zipCode;
-        this.country = country;
-    }
+import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-    public String getRole() {
-        return role;
-    }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
 
-    public String getlName() {
-        return lName;
-    }
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-    public void setlName(String lName) {
-        this.lName = lName;
-    }
+/*
+ * Employee.java
+ * This file contains the employee entity for ADP employees
+ *
+ */
 
-    public String getfName() {
-        return fName;
-    }
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table(name = "employee")
+@EntityListeners(AuditingEntityListener.class)
+public class Employee {
+    @Id // To provide a primary key of our entity
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto increments primary key
+    // @Column maps a column name to the field
+    @Column(name = "employeeID", nullable = false) // employeeid not null
+    private Long employeeID;
 
-    public void setfName(String fName) {
-        this.fName = fName;
-    }
+    @OneToOne(cascade = CascadeType.ALL) // One to one relationship between employee and location
+    @JoinColumn(name = "location_id", referencedColumnName = "locationID") // Foreign key location table
+    private Location location; // instantiate location entity(object)
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
-    public int getPhone() {
-        return phone;
-    }
+    @Column(name = "Job_Title")
+    private String job_title;
 
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
+    @Column(name = "lName", length = 60)
+    private String lastName;
 
-    public String getAddress() {
-        return address;
-    }
+    @Column(name = "fName", length = 60)
+    private String firstName;
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    @Column(name = "Phone", length = 60)
+    private String phone;
 
-    public int getZipCode() {
-        return zipCode;
-    }
+    @Column(name = "Email", length = 60)
+    private String email;
 
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
-    }
+    @Column(nullable = false, updatable = false)
+    @CreatedDate
+    private Instant created_at;
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
+    @Column(nullable = false)
+    @LastModifiedDate
+    private Instant updated_at;
 }

@@ -1,6 +1,6 @@
 package com.okta.developer.ADP_Capstone.FormI9.Section1.entity;
 
-import com.okta.developer.ADP_Capstone.FormI9.Form.entity.Form_I9;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +9,8 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.okta.developer.ADP_Capstone.FormI9.Form.entity.Form_I9;
 
 import java.util.*;
 
@@ -22,9 +24,8 @@ import java.util.*;
 public class Section1 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-  
+    private Long section1_ID;
 
-    private Long section1_id;
     private String lastName;
     private String firstName;
     private String middleName;
@@ -55,8 +56,12 @@ public class Section1 {
     private Date modified_At;
 
 
+    
     @ManyToMany(mappedBy = "section1s", fetch = FetchType.LAZY)
     private Set<Form_I9> form_i9s = new HashSet<>();
+
+
+
   
 
     public Section1(String lastName, String firstName,

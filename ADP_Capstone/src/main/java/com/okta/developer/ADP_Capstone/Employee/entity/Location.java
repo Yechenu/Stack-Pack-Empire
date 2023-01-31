@@ -1,56 +1,41 @@
 package com.okta.developer.ADP_Capstone.Employee.entity;
 
+
+
+import jakarta.persistence.*;
+import lombok.*;
+/*
+ * Location.java
+ * This file contains the location entity for ADP locations
+ * @Aladi
+ */
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "location")
 public class Location {
-    int bldgNum;
-    String address, city, state, country;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "locationID")
+    private Long locationID; // Primary key locationID auto increment
 
-    public Location(int bldgNum, String address, String city, String state, String country) {
-        this.bldgNum = bldgNum;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.country = country;
-    }
+    @Column(name = "BldgNum")
+    private Integer bldgnum;
 
-    public int getBldgNum() {
-        return bldgNum;
-    }
+    @Column(name = "Address")
+    private String address;
 
-    public void setBldgNum(int bldgNum) {
-        this.bldgNum = bldgNum;
-    }
+    @Column(name = "City")
+    private String city;
 
-    public String getAddress() {
-        return address;
-    }
+    @Column(name = "State")
+    private String state;
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    @Column(name = "Country")
+    private String country;
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
 }
-
 

@@ -21,13 +21,14 @@ public class ApplicantService {
         savedApplicant.setApplicantID(request.getApplicantID());
         savedApplicant.setApplicant_Fname(request.getApplicant_Fname());
         savedApplicant.setApplicant_Lname(request.getApplicant_Lname());
-        savedApplicant.setFormID(request.getFormID());
         savedApplicant.setEVerifyStatus(request.getEVerifyStatus());
         savedApplicant.setApplicant_StartDate(request.getApplicant_StartDate());
         savedApplicant.setApplicant_City(request.getApplicant_City());
         savedApplicant.setApplicant_State(request.getApplicant_State());
         savedApplicant.setApplicant_Country(request.getApplicant_Country());
-        savedApplicant.setEmployeeID(request.getEmployeeID());
+        // savedApplicant.setEmployeeID(request.getEmployeeID());
+        //  savedApplicant.setFormID(request.getFormID());
+        //  savedApplicant.setLocationID(request.getLocationID());
 
         return savedApplicant;
 

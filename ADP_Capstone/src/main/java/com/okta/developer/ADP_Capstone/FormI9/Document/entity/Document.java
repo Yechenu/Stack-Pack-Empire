@@ -1,5 +1,6 @@
 package com.okta.developer.ADP_Capstone.FormI9.Document.entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +9,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.okta.developer.ADP_Capstone.FormI9.Form.entity.Form_I9;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -85,6 +88,13 @@ public class Document {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified_At", length=60, nullable = false)
     private Timestamp modified_At;
+
+
+     @ManyToOne(fetch = FetchType.LAZY, optional = false)
+     @JoinColumn(name = "formid", nullable = false)
+    private Form_I9 form_i9;
+
+
     public Document() {
 
     }
@@ -103,7 +113,7 @@ public class Document {
         return this.fileAttachment;
     }
 
-    public String getDocumentID() {
+    public String  getDocumentID() {
 
         return this.documentID;
     }

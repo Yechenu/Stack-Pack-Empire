@@ -3,7 +3,6 @@ package com.okta.developer.ADP_Capstone.ActivityReport.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
 
 @Builder
 @NoArgsConstructor
@@ -16,7 +15,7 @@ public class ActivityReport {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long activityreportID;
     private String User;
