@@ -625,3 +625,248 @@ Caused by: java.io.FileNotFoundException: C:\Users\DiamondBrown\OneDrive - Xpanx
 2023-01-17 13:44:13,710 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
 2023-01-17 13:44:13,720 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
 2023-01-17 13:44:13,729 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:19:40,551 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2023-01-30 15:19:50,811 [Worker-9: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.okta.developer:ADP_Capstone:0.0.1-SNAPSHOT @ C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\pom.xml.
+2023-01-30 15:19:53,267 [Worker-9: Building] ERROR o.e.m.c.i.p.WorkspaceStateWriter - Error writing workspace state file
+org.eclipse.core.internal.resources.ResourceException: Could not write metadata for 'C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\.metadata\.plugins\org.eclipse.core.resources\.projects\ADP_Capstone\.indexes\properties.index'.
+	at org.eclipse.core.internal.localstore.Bucket.save(Bucket.java:426)
+	at org.eclipse.core.internal.properties.PropertyBucket.save(PropertyBucket.java:301)
+	at org.eclipse.core.internal.properties.PropertyManager2.setProperty(PropertyManager2.java:183)
+	at org.eclipse.core.internal.resources.Resource.setPersistentProperty(Resource.java:1697)
+	at org.eclipse.m2e.core.internal.project.WorkspaceStateWriter.getAndPersistArtifactExtension(WorkspaceStateWriter.java:133)
+	at org.eclipse.m2e.core.internal.project.WorkspaceStateWriter.mavenProjectChanged(WorkspaceStateWriter.java:95)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.notifyProjectChangeListeners(ProjectRegistryManager.java:832)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.applyMutableProjectRegistry(ProjectRegistryManager.java:985)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:315)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:149)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:87)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:364)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:274)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:213)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:86)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:196)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1024)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:254)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:400)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:403)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:514)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:462)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:544)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:161)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:255)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.FileNotFoundException: C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\.metadata\.plugins\org.eclipse.core.resources\.projects\ADP_Capstone\.indexes\properties.index (The tag present in the reparse point buffer is invalid)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:293)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:184)
+	at org.eclipse.core.internal.localstore.Bucket.save(Bucket.java:414)
+	... 28 common frames omitted
+2023-01-30 15:19:54,010 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:19:54,048 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-30 15:19:54,058 [Worker-9: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:19:54,067 [Worker-9: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of ADP_Capstone
+2023-01-30 15:19:54,068 [Worker-9: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for ADP_Capstone
+2023-01-30 15:19:56,401 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:19:56,413 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:19:56,423 [Worker-4: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:25:00,060 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-30 15:25:00,061 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-30 15:25:00,069 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:25:57,402 [main] INFO  o.e.m2e.actions.ExecutePomAction - Creating new launch configuration
+2023-01-30 15:26:09,455 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149 [954])
+2023-01-30 15:26:09,461 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149
+2023-01-30 15:26:09,462 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\aether-connector-okhttp-0.17.8.jar
+2023-01-30 15:26:09,462 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\commons-cli-1.4.jar
+2023-01-30 15:26:09,463 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\commons-io-2.6.jar
+2023-01-30 15:26:09,464 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\commons-lang3-3.8.1.jar
+2023-01-30 15:26:09,464 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\guice-4.2.2-no_aop.jar
+2023-01-30 15:26:09,465 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\jansi-2.4.0.jar
+2023-01-30 15:26:09,465 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-artifact-3.8.6.jar
+2023-01-30 15:26:09,466 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-builder-support-3.8.6.jar
+2023-01-30 15:26:09,467 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-compat-3.8.6.jar
+2023-01-30 15:26:09,467 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-core-3.8.6.jar
+2023-01-30 15:26:09,468 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-embedder-3.8.6.jar
+2023-01-30 15:26:09,468 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-model-3.8.6.jar
+2023-01-30 15:26:09,469 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-model-builder-3.8.6.jar
+2023-01-30 15:26:09,470 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-plugin-api-3.8.6.jar
+2023-01-30 15:26:09,470 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-repository-metadata-3.8.6.jar
+2023-01-30 15:26:09,471 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-resolver-api-1.6.3.jar
+2023-01-30 15:26:09,472 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-resolver-connector-basic-1.6.3.jar
+2023-01-30 15:26:09,472 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-resolver-impl-1.6.3.jar
+2023-01-30 15:26:09,473 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-resolver-provider-3.8.6.jar
+2023-01-30 15:26:09,473 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-resolver-spi-1.6.3.jar
+2023-01-30 15:26:09,474 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-resolver-transport-wagon-1.6.3.jar
+2023-01-30 15:26:09,475 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-resolver-util-1.6.3.jar
+2023-01-30 15:26:09,475 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-settings-3.8.6.jar
+2023-01-30 15:26:09,476 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-settings-builder-3.8.6.jar
+2023-01-30 15:26:09,477 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\maven-shared-utils-3.3.4.jar
+2023-01-30 15:26:09,477 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\okhttp-3.14.1.jar
+2023-01-30 15:26:09,478 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\okio-1.17.3.jar
+2023-01-30 15:26:09,479 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\org.eclipse.sisu.inject-0.3.5.jar
+2023-01-30 15:26:09,479 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\org.eclipse.sisu.plexus-0.3.5.jar
+2023-01-30 15:26:09,480 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\plexus-build-api-0.0.7.jar
+2023-01-30 15:26:09,481 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\plexus-cipher-2.0.jar
+2023-01-30 15:26:09,481 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\plexus-classworlds-2.6.0.jar
+2023-01-30 15:26:09,482 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\plexus-component-annotations-2.1.0.jar
+2023-01-30 15:26:09,482 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\plexus-interpolation-1.26.jar
+2023-01-30 15:26:09,482 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\plexus-sec-dispatcher-2.0.jar
+2023-01-30 15:26:09,483 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\plexus-utils-3.3.1.jar
+2023-01-30 15:26:09,483 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\wagon-file-3.5.1.jar
+2023-01-30 15:26:09,484 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.8.604.20221130-2149\jars\wagon-provider-api-3.5.1.jar
+2023-01-30 15:26:09,487 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava_30.1.0.v20221112-0806 [920])
+2023-01-30 15:26:09,490 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\com.google.guava_30.1.0.v20221112-0806.jar
+2023-01-30 15:26:09,490 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=slf4j.api_1.7.36 [978])
+2023-01-30 15:26:09,492 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\slf4j.api_1.7.36.jar
+2023-01-30 15:26:09,492 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=javax.inject_1.0.0.v20220405-0441 [31])
+2023-01-30 15:26:09,495 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\javax.inject_1.0.0.v20220405-0441.jar
+2023-01-30 15:26:09,496 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=javax.annotation_1.3.5.v20200909-1856 [29])
+2023-01-30 15:26:09,499 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\DiamondBrown\.p2\pool\plugins\javax.annotation_1.3.5.v20200909-1856.jar
+2023-01-30 15:26:09,504 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone":
+2023-01-30 15:26:09,512 [Worker-44: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dstyle.color=always clean
+2023-01-30 15:26:13,709 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:26:13,723 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:26:13,741 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:26:13,742 [Worker-44: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of ADP_Capstone
+2023-01-30 15:26:13,742 [Worker-44: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for ADP_Capstone
+2023-01-30 15:29:02,158 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:29:02,174 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:29:02,182 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:30:39,011 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:30:39,021 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:30:39,037 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:33:28,516 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:33:28,594 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:33:28,602 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:37:01,025 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:37:01,036 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:37:01,042 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:38:20,517 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:38:20,536 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:38:20,542 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:39:33,289 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:39:33,299 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:39:33,304 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:40:02,728 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:40:02,743 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:40:02,750 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:41:23,952 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:41:23,973 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:41:23,980 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:42:04,655 [Worker-46: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:42:04,667 [Worker-46: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:42:04,675 [Worker-46: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:42:20,026 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:42:20,037 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:42:20,043 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:42:24,417 [Worker-52: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone":
+2023-01-30 15:42:24,417 [Worker-52: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dstyle.color=always clean
+2023-01-30 15:42:28,411 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:42:28,416 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:42:28,422 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 15:42:28,423 [Worker-51: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of ADP_Capstone
+2023-01-30 15:42:28,423 [Worker-51: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for ADP_Capstone
+2023-01-30 15:58:02,626 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:58:02,635 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 15:58:02,648 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 16:22:23,983 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 16:22:23,991 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 16:22:24,002 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 16:23:02,676 [Worker-68: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.okta.developer:ADP_Capstone:0.0.1-SNAPSHOT @ C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\pom.xml.
+2023-01-30 16:23:03,267 [Worker-68: Building] ERROR o.e.m.c.i.p.WorkspaceStateWriter - Error writing workspace state file
+org.eclipse.core.internal.resources.ResourceException: Could not write metadata for 'C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\.metadata\.plugins\org.eclipse.core.resources\.projects\ADP_Capstone\.indexes\properties.index'.
+	at org.eclipse.core.internal.localstore.Bucket.save(Bucket.java:426)
+	at org.eclipse.core.internal.properties.PropertyBucket.save(PropertyBucket.java:301)
+	at org.eclipse.core.internal.properties.PropertyManager2.setProperty(PropertyManager2.java:183)
+	at org.eclipse.core.internal.resources.Resource.setPersistentProperty(Resource.java:1697)
+	at org.eclipse.m2e.core.internal.project.WorkspaceStateWriter.getAndPersistArtifactExtension(WorkspaceStateWriter.java:133)
+	at org.eclipse.m2e.core.internal.project.WorkspaceStateWriter.mavenProjectChanged(WorkspaceStateWriter.java:95)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.notifyProjectChangeListeners(ProjectRegistryManager.java:832)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.applyMutableProjectRegistry(ProjectRegistryManager.java:985)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:315)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:149)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:87)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:364)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:274)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:213)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:86)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:196)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1024)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:254)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:400)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:403)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:514)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:462)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:544)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:161)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:255)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.FileNotFoundException: C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\.metadata\.plugins\org.eclipse.core.resources\.projects\ADP_Capstone\.indexes\properties.index (The tag present in the reparse point buffer is invalid)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:293)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:184)
+	at org.eclipse.core.internal.localstore.Bucket.save(Bucket.java:414)
+	... 28 common frames omitted
+2023-01-30 16:23:03,691 [Worker-68: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-30 16:23:03,692 [Worker-68: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-30 16:23:03,697 [Worker-68: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 16:23:03,697 [Worker-68: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of ADP_Capstone
+2023-01-30 16:23:03,698 [Worker-68: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for ADP_Capstone
+2023-01-30 16:26:41,718 [Worker-70: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.okta.developer:ADP_Capstone:0.0.1-SNAPSHOT @ C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\pom.xml.
+2023-01-30 16:26:42,100 [Worker-70: Building] ERROR o.e.m.c.i.p.WorkspaceStateWriter - Error writing workspace state file
+org.eclipse.core.internal.resources.ResourceException: Could not write metadata for 'C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\.metadata\.plugins\org.eclipse.core.resources\.projects\ADP_Capstone\.indexes\properties.index'.
+	at org.eclipse.core.internal.localstore.Bucket.save(Bucket.java:426)
+	at org.eclipse.core.internal.properties.PropertyBucket.save(PropertyBucket.java:301)
+	at org.eclipse.core.internal.properties.PropertyManager2.setProperty(PropertyManager2.java:183)
+	at org.eclipse.core.internal.resources.Resource.setPersistentProperty(Resource.java:1697)
+	at org.eclipse.m2e.core.internal.project.WorkspaceStateWriter.getAndPersistArtifactExtension(WorkspaceStateWriter.java:133)
+	at org.eclipse.m2e.core.internal.project.WorkspaceStateWriter.mavenProjectChanged(WorkspaceStateWriter.java:95)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.notifyProjectChangeListeners(ProjectRegistryManager.java:832)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.applyMutableProjectRegistry(ProjectRegistryManager.java:985)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:315)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:149)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:87)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:364)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:274)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:213)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:86)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:196)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1024)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:254)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:400)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:403)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:514)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:462)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:544)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:161)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:255)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.FileNotFoundException: C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\.metadata\.plugins\org.eclipse.core.resources\.projects\ADP_Capstone\.indexes\properties.index (The tag present in the reparse point buffer is invalid)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:293)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:184)
+	at org.eclipse.core.internal.localstore.Bucket.save(Bucket.java:414)
+	... 28 common frames omitted
+2023-01-30 16:26:42,401 [Worker-70: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-30 16:26:42,401 [Worker-70: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource
+2023-01-30 16:26:42,406 [Worker-70: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 16:26:42,407 [Worker-70: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of ADP_Capstone
+2023-01-30 16:26:42,407 [Worker-70: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for ADP_Capstone
+2023-01-30 16:27:01,888 [Worker-63: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone":
+2023-01-30 16:27:01,890 [Worker-63: Launching Executing clean in C__Users_DiamondBrown_OneDrive - Xpanxion_Documents_GitHub_Stack-Pack-Empire_ADP_Capstone] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dstyle.color=always clean
+2023-01-30 16:27:05,481 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 16:27:05,500 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource
+2023-01-30 16:27:05,506 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\DiamondBrown\OneDrive - Xpanxion\Documents\GitHub\Stack-Pack-Empire\ADP_Capstone\src\test\resources
+2023-01-30 16:27:05,506 [Worker-69: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of ADP_Capstone
+2023-01-30 16:27:05,507 [Worker-69: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for ADP_Capstone

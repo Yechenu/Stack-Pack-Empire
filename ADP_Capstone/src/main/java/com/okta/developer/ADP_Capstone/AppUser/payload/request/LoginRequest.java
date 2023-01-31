@@ -1,17 +1,27 @@
 package com.okta.developer.ADP_Capstone.AppUser.payload.request;
 
-import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import javax.validation.constraints.NotBlank;
 
-@Getter
-@Setter
-@AllArgsConstructor
 public class LoginRequest {
-    @NotBlank
-    private String username;
-    @NotBlank
-    private String password;
+	@NotBlank
+  private String username;
 
+	@NotBlank
+	private String password;
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }
