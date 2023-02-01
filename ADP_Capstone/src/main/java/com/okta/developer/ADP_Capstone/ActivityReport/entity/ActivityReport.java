@@ -24,8 +24,8 @@ public class ActivityReport {
     private String City;
     private String Reviewer;
 
-   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-   @JoinColumn(name = "formid", nullable = false)
+   @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "formid")
     private Form_I9 form_i9;
 
     public ActivityReport(Long activityreportID, String user, String country, String state, String city, String reviewer) {

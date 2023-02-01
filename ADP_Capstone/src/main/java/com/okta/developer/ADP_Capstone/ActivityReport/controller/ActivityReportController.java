@@ -16,7 +16,7 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("capstoneApi/auth/ActivityReport")
+@RequestMapping("capstoneApi/auth/activityreport")
 public class ActivityReportController {
     @Autowired
     ActivityReportService activityReportService;
