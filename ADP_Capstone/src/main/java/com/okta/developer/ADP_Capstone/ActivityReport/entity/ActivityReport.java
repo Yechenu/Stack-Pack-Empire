@@ -1,10 +1,10 @@
 package com.okta.developer.ADP_Capstone.ActivityReport.entity;
 
+import com.okta.developer.ADP_Capstone.FormI9.Form.entity.Form_I9;
 import jakarta.persistence.*;
 import lombok.*;
 
 
-@Builder
 @NoArgsConstructor
 @Getter
 @Setter
@@ -19,16 +19,18 @@ public class ActivityReport {
 
     private Long activityreportID;
     private String User;
-    private int FormID;
     private String Country;
     private String State;
     private String City;
     private String Reviewer;
 
-    public ActivityReport(Long activityreportID, String user, int formID, String country, String state, String city, String reviewer) {
+   @ManyToOne(fetch = FetchType.LAZY, optional = false)
+   @JoinColumn(name = "formid", nullable = false)
+    private Form_I9 form_i9;
+
+    public ActivityReport(Long activityreportID, String user, String country, String state, String city, String reviewer) {
         this.activityreportID = activityreportID;
         this.User = user;
-        this.FormID = formID;
         this.Country = country;
         this.State = state;
         this.City = city;

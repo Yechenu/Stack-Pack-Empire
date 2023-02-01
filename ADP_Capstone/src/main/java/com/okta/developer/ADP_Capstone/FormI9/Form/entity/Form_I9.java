@@ -4,6 +4,7 @@ package com.okta.developer.ADP_Capstone.FormI9.Form.entity;
 
 
 
+import com.okta.developer.ADP_Capstone.ActivityReport.entity.ActivityReport;
 import com.okta.developer.ADP_Capstone.FormI9.Document.entity.Document;
 import jakarta.persistence.*;
 import lombok.*;
@@ -30,10 +31,10 @@ public class Form_I9 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-  
+
 
     private Integer formID;
-   private Integer employeeID;
+    private Integer employeeID;
     private Long section1_ID;
     private Long section2_ID;
     private Integer documentID;
@@ -65,11 +66,16 @@ public class Form_I9 {
 
     @OneToMany(mappedBy = "form_i9", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-
-
-
-
     private Set<Document> documents;
+
+
+    @OneToMany(mappedBy = "form_i9", fetch = FetchType.LAZY,
+               cascade = CascadeType.ALL)
+      private Set<ActivityReport> activityReports;
+
+
+
+
 
     public Form_I9(Integer formID, Integer employeeID, Long section1_ID, Long section2_ID, Integer documentID, Timestamp modified_At, Timestamp created_At) {
         this.formID = formID;

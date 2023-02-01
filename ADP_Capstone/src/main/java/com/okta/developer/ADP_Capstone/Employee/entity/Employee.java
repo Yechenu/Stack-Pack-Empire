@@ -1,8 +1,11 @@
 package com.okta.developer.ADP_Capstone.Employee.entity;
 
 import java.time.Instant;
+import java.util.Set;
 
 
+
+import com.okta.developer.ADP_Capstone.Blacklist.entity.Blacklist;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -37,7 +40,9 @@ public class Employee {
     @JoinColumn(name = "location_id", referencedColumnName = "locationID") // Foreign key location table
     private Location location; // instantiate location entity(object)
 
-
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Set<Blacklist> blacklists;
 
     @Column(name = "Job_Title")
     private String job_title;
