@@ -18,7 +18,8 @@ public class ActivityReport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long activityreportID;
-    private String User;
+    private String Lname;
+    private String Fname;
     private String Country;
     private String State;
     private String City;
@@ -28,12 +29,15 @@ public class ActivityReport {
    @JoinColumn(name = "formid")
     private Form_I9 form_i9;
 
-    public ActivityReport(Long activityreportID, String user, String country, String state, String city, String reviewer) {
+    public ActivityReport(Long activityreportID, String lname, String fname, String country, String state, String city, String reviewer, Form_I9 form_i9) {
         this.activityreportID = activityreportID;
-        this.User = user;
-        this.Country = country;
-        this.State = state;
-        this.City = city;
-        this.Reviewer = reviewer;
+        Lname = lname;
+        Fname = fname;
+        Country = country;
+        State = state;
+        City = city;
+        Reviewer = reviewer;
+        this.form_i9 = form_i9;
     }
 }
+

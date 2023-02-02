@@ -20,7 +20,8 @@ public class ActivityReportService {
     public ActivityReport setActivityReport(ActivityReport_Request request) {
         ActivityReport savedActivityReport = new ActivityReport();
             savedActivityReport.setActivityreportID(request.getActivityreportID());
-            savedActivityReport.setUser(request.getUser());
+            savedActivityReport.setLname(request.getLname());
+            savedActivityReport.setFname(request.getFname());
             savedActivityReport.setCountry(request.getCountry());
             savedActivityReport.setState(request.getState());
             savedActivityReport.setCity(request.getCity());

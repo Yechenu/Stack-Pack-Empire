@@ -2,6 +2,7 @@ package com.okta.developer.ADP_Capstone.ActivityReport.controller;
 
 
 import com.okta.developer.ADP_Capstone.ActivityReport.entity.ActivityReport;
+import com.okta.developer.ADP_Capstone.ActivityReport.exception.ResourceNotFoundException;
 import com.okta.developer.ADP_Capstone.ActivityReport.payload.ActivityReport_Request;
 import com.okta.developer.ADP_Capstone.ActivityReport.repository.ActivityReportRepository;
 import com.okta.developer.ADP_Capstone.ActivityReport.service.ActivityReportService;
@@ -33,6 +34,12 @@ public class ActivityReportController {
     @GetMapping("/getlist")
     public List<ActivityReport> getActivityReport(){
         return this.activityReportRepository.findAll();
+    }
+         @GetMapping ("/find/{id}" )
+    public ResponseEntity<ActivityReport> getById(@PathVariable  long id){
+        ActivityReport activityReport = activityReportRepository.findById(id)
+               .orElseThrow(() -> new ResourceNotFoundException("Form I9 not exist with id:" + id));
+        return ResponseEntity.ok(activityReport);
 
     }
 

@@ -34,6 +34,7 @@ public class ApplicantController {
         return this.applicantRepository.findAll();
     }
 
+
     @PostMapping("/post")
     public Applicant completeApplicant(@RequestBody Applicant_Request request) throws URISyntaxException{
         Applicant savedApplicant = applicantService.setApplicant(request);

@@ -9,7 +9,8 @@ import java.io.Serializable;
 public class ActivityReport_Request implements Serializable {
 
     public final Long activityreportID;
-    public final String User;
+    public final String Lname;
+    public final String Fname;
     public final String Country;
     public final String State;
     public final String City;
