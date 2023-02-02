@@ -1,13 +1,10 @@
 package com.okta.developer.ADP_Capstone.FormI9.Document.entity;
 
+import com.okta.developer.ADP_Capstone.Personell.entity.Applicant;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -23,12 +20,9 @@ import java.sql.Timestamp;
  * */
 
 
-@AllArgsConstructor
-@Getter
-@Setter
+
 @Entity
-@Table(name = "Document_I9")
-@EntityListeners(AuditingEntityListener.class)
+@Table(name = "document_I9")
 public class Document {
 
     @Id
@@ -65,6 +59,9 @@ public class Document {
     @Lob
     @Column(name ="fileAttachment", length=100000)
     private byte[] fileAttachment;
+    @ManyToOne
+    @JoinColumn(name = "applicant_id_document")
+    private Applicant applicantID;
 
     @CreationTimestamp
     @Column(name = "created_At", length=60,  nullable = false)
@@ -74,6 +71,15 @@ public class Document {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modified_At", length=60, nullable = false)
     private Timestamp modified_At;
+
+    public Applicant getApplicantID() {
+        return applicantID;
+    }
+
+    public void setApplicantID(Applicant applicantID) {
+        this.applicantID = applicantID;
+    }
+
     public Document() {
 
     }
@@ -84,21 +90,23 @@ public class Document {
     }
 
 
-    public String getFileName() {
 
-        return this.fileName;
-    }
-    public byte[] getFileAttachment() {
-        return this.fileAttachment;
-    }
 
-    public String getDocumentID() {
-
-        return this.documentID;
-    }
-
+    public String getDocumentID() { return this.documentID;}
     public String getFileType() {
         return this.fileType;
     }
+    public void setFileType(String fileType){this.fileType = fileType;}
+    public String getFileName() {return this.fileName;}
+    public void setFileName(String fileName){this.fileName = fileName;}
+    public byte[] getFileAttachment() {
+        return this.fileAttachment;
+    }
+    public void setFileAttachment(byte[] fileAttachment) {
+         this.fileAttachment = fileAttachment;
+    }
+
 }
+
+
 

@@ -17,7 +17,7 @@ public class Section1_Service {
          this.section1_repository=section1_repository;
     }
 
-    public  Section1  setSection1(Section1_Request request) {
+    public  Section1 setSection1(Section1_Request request) {
         Section1 savedSection1 = new Section1();
         savedSection1.setLastName(request.getLastName());
         savedSection1.setFirstName(request.getFirstName());

@@ -11,9 +11,6 @@ import lombok.Setter;
  *
  * @Diamond Brown*/
 
-@Getter
-@Setter
-@NoArgsConstructor
 public class ResponseFile {
 
 
@@ -24,11 +21,11 @@ public class ResponseFile {
 
 
     public ResponseFile(String fileName, String fileDownloadUri,
-                        String fileType, long l) {
+                        String fileType, long size) {
         this.fileName= fileName;
         this.fileDownloadUri= fileDownloadUri;
         this.fileType= fileType;
-        this.size= l;
+        this.size= size;
 
     }
     public String getFileName() {
