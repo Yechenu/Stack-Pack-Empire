@@ -1,4 +1,4 @@
-# ADP Capston- Stack Pack Empire
+# ADP Capstone- Stack Pack Empire
 Capstone project team collaboration (UNFINISHED PRODUCT)
 
 Project Presentation also included in PDF format.
