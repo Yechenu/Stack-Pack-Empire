@@ -1,0 +1,30 @@
+
+
+.progress-1 {
+    border: #998bc0;
+    border-radius: 8px;
+    
+    height: 600px;
+    
+    box-shadow: 0px 0px 30px 8px rgba(122, 103, 174, 0.3);
+    background: rgba(240, 240, 240, 0.5);
+    
+    
+}
+
+.review {
+    border: #998bc0;
+    border-radius: 8px;
+
+    height: 600px;
+    
+    box-shadow: 0px 0px 30px 8px rgba(122, 103, 174, 0.3);
+    background: rgba(240, 240, 240, 0.5);
+
+}
+
+#progress-2{
+    border-bottom: solid;
+    border-radius: 4px;
+    border-bottom: #998bc0;
+}
