@@ -1,6 +1,8 @@
 # Stack-Pack-Empire
 Capstone project team collaboration (UNFINISHED PRODUCT)
 
+Project Presentation also included in PDF format.
+
 --Files Used for Demo--
 
 To meet all ADP’s requirements to
